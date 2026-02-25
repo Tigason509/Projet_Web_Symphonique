@@ -1,0 +1,93 @@
+/* --- Variables de couleurs (Thème Or & Anthracite) --- */
+:root {
+	--gold: #b89241;
+	--dark-bg: #1a1a1a;
+	--light-bg: #fdfdfd;
+	--text-main: #333333;
+	--border-color: #e0e0e0;
+}
+
+body {
+	/* Utilise les polices déjà présentes sur l'ordinateur de l'utilisateur */
+	font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	background-color: var(--light-bg);
+	color: var(--text-main);
+	margin: 0;
+	padding: 0;
+}
+
+/* --- Navigation --- */
+.navbar {
+	background-color: var(--white) !important;
+	border-bottom: 3px solid var(--gold);
+	box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+	/* Police Serif pour un côté institutionnel/Hôtel de luxe */
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold;
+	font-size: 1.6rem;
+	color: var(--gold) !important;
+	letter-spacing: 1px;
+}
+
+.nav-link {
+	color: #555 !important;
+	transition: 0.3s;
+}
+
+.nav-link:hover {
+	color: var(--gold) !important;
+}
+
+/* --- Titre Principal --- */
+h1 {
+	font-family: 'Georgia', serif;
+	color: var(--dark-bg);
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	font-style: italic;
+}
+
+/* --- Container du Formulaire --- */
+/* Pour que ce soit beau, on centre le formulaire avec une largeur max */
+.mb-3 {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 15px;
+}
+
+.form-label {
+	font-weight: bold;
+	color: var(--dark-bg);
+	font-size: 0.9rem;
+	text-transform: uppercase;
+}
+
+.form-control {
+	border: 1px solid var(--border-color);
+	border-radius: 0px; /* Le "flat design" sans arrondis fait plus pro/luxe */
+	padding: 12px;
+	background-color: #fff;
+}
+
+.form-control:focus {
+	border-color: var(--gold);
+	box-shadow: 0 0 5px rgba(184, 146, 65, 0.3);
+}
+
+/* --- Le Bouton de recherche --- */
+.btn-outline-success {
+	color: var(--gold) !important;
+	border-color: var(--gold) !important;
+	border-radius: 0px;
+	transition: all 0.4s;
+}
+
+.btn-outline-success:hover {
+	background-color: var(--gold) !important;
+	color: #fff !important;
+}
