@@ -21,9 +21,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Accueil</a></li>
-                        <li><a class="dropdown-item" href="#">Réserver</a></li>
-                        <li><a class="dropdown-item" href="#">Se connecter</a></li>
+                        <li><a class="dropdown-item" href="Reservation.php">Réserver</a></li>
+                        <li><a class="dropdown-item" href="Connexion.php">Se connecter</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">En savoir plus</a></li>
                     </ul>

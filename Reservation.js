@@ -5,7 +5,7 @@ function getActivites() {
         method: 'GET',
         dataType :"json",
         url : 'getActivites.php', //Script Vise
-        data : {"nmax":1}
+        data : {"nmax":2}
     }).done(function (activites) {
         console.log(activites);
         for(i in activites){
@@ -18,7 +18,7 @@ function getActivites() {
 function verifEmail(){
     console.log()
     $.ajax({
-        method:'GET'
+        method:'GET',
         dataType: "json"
     })
 }
