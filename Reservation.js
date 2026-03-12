@@ -15,4 +15,11 @@ function getActivites() {
         console.log(e)
     });
 }
+function verifEmail(){
+    console.log()
+    $.ajax({
+        method:'GET'
+        dataType: "json"
+    })
+}
 

@@ -1,0 +1,8 @@
+[
+  {
+    "email": "emailadmin@gmail.com",
+    "mdp": "motdepasse",
+    "nom" : "administrateur",
+    "prenom": "nom_administrateur"
+  }
+]

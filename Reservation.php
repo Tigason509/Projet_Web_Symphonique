@@ -27,6 +27,7 @@
             </select>
             </div>
         </div>
+        <button type="button" id="envoi_reservation" >Envoyer</button>
     </div>
 </section>
 
