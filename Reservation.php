@@ -1,3 +1,10 @@
+<?php
+     $file='Activite.json' ;
+     $donnes=json_decode(file_get_contents($file),true);
+     $activites =$donnes[0] ;# récupération des donnes
+     var_dump( $donnes ); #affichage des données présentes dans le fichier JSON
+?>
+
 <section id="reclamation" class="py-5 bg-white">
     <div class="container">
         <div class="row align-items-center">
