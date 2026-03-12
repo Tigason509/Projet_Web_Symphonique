@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "occupe": "false",
+        "capacite": "3",
+        "nb_personnes": "2"
+    },
+
+    {
+        "id": "2",
+        "occupe": "true",
+        "capacite": "3",
+        "nb_personnes": "2"
+    },
+
+    {
+        "id": "3",
+        "occupe": "false",
+        "capacite": "3",
+        "nb_personnes": "2"
+    },
+
+    {
+        "id": "4",
+        "occupe": "false",
+        "capacite": "3",
+        "nb_personnes": "2"
+    },
+
+    {
+        "id": "5",
+        "occupe": "false",
+        "capacite": "3",
+        "nb_personnes": "2"
+    }
+
+]
