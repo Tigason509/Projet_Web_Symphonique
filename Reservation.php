@@ -1,9 +1,13 @@
-<?php
-     $file='Activite.json' ;
-     $donnes=json_decode(file_get_contents($file),true);
-     $activites =$donnes[0] ;# récupération des donnes
-     var_dump( $donnes ); #affichage des données présentes dans le fichier JSON
-?>
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="Reservation.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body onload="getActivites()">
 
 <section id="reclamation" class="py-5 bg-white">
     <div class="container">
@@ -19,7 +23,12 @@
                 Activité
             </h3>
             <input type="email" class="form-control" id="Reservation_emailInput" placeholder="nom@exemple.com">
+            <select id="activ">
+            </select>
             </div>
         </div>
     </div>
 </section>
+
+</body>
+</html>
