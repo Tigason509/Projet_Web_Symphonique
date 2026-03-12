@@ -1,0 +1,12 @@
+[
+  {
+    "nom" : "piano" ,
+    "id" : 1 ,
+    "disponible" : true
+  },
+  {
+    "nom" : "badminton" ,
+    "id" : 2 ,
+    "disponible" : true
+  }
+]
