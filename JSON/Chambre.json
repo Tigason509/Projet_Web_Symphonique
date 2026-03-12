@@ -1,0 +1,15 @@
+[
+  {
+    "id" : 1,
+    "capacite": 5,
+    "disponible" : true,
+    "n_personnes" : 0
+
+  } ,
+  {
+    "id" : 2,
+    "capacite": 5,
+    "disponible" : true,
+    "n_personnes" : 0
+  }
+]

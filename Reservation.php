@@ -11,7 +11,7 @@
             <h3>
                 Activité
             </h3>
-            
+            <input type="email" class="form-control" id="Reservation_emailInput" placeholder="nom@exemple.com">
             </div>
         </div>
     </div>
