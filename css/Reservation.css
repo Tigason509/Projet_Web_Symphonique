@@ -1,26 +1,77 @@
-#reclamation {
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
 }
 
+#reclamation {
+    padding: 50px 20px;
+}
 
-.btn-gold {
+.container {
+    max-width: 1100px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+.text-muted {
+    color: #777;
+}
+
+.reservation {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fafafa;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.reservation p {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #b89241;
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
     background-color: #b89241;
     color: white;
-    border-radius: 0;
-    padding: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-.btn-gold:hover {
-    background-color: #1a1a1a;
-    color: #b89241;
+button:hover {
+    background-color: #9c7734;
 }
 
-.card {
-    border-radius: 0;
-    background-color: #ffffff;
+h3 {
+    margin-top: 30px;
+}
+
+#envoi_reservation {
+    margin-top: 20px;
+    width: 100%;
 }

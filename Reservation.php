@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Titre de la page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/Reservation.css">
     <script src="Reservation.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
@@ -22,6 +22,10 @@
             <div class="reservation">
                 <p>Reserver ici</p>
                 <select id="reserv">
+                    <p>Votre nom</p>
+                    <input class="form-control" id="nom">
+                    <p>Votre prénom</p>
+                    <input class="form-control" id="prenom">
                     <p>Vous etes combien de personnes à réserver ?</p>
                     <input class="form-control" id="Reservation_n_personnes_Input" placeholder="0">
                     <p>à partir de quand ?</p>

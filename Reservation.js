@@ -1,4 +1,4 @@
-
+// Toutes les fonctions d'initialisation
 function init() {
     console.log("getA")
     $.ajax({
