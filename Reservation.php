@@ -25,9 +25,9 @@
                     <p>Vous etes combien de personnes à réserver ?</p>
                     <input class="form-control" id="Reservation_n_personnes_Input" placeholder="0">
                     <p>à partir de quand ?</p>
-
+                    <input type="date" id="debut" name="debut">
                     <p>Jusqu'à quand ?</p>
-
+                    <input type="date" id="fin" name="fin">
                     <button type="submit" id="envoi_reserv">Reserver !</button>
             </div>
             <h3>
