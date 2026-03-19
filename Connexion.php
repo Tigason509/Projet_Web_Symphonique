@@ -2,48 +2,49 @@
 
 $file = 'JSON/Client.json';
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email_saisi = $_POST['email'];
-    $mdp_saisi = $_POST['mdp'];
 
-    // Charger les données du fichier JSON
+    $email_saisi = $_POST['email']  ;
+    $mdp_saisi = $_POST['mdp']  ;
+
     if (file_exists($file)) {
+
         $json_data = file_get_contents($file);
         $utilisateurs = json_decode($json_data, true);
 
-        $auth_reussie = false;
-        $user_info = null;
+        // Sécurité JSON
+        if (!is_array($utilisateurs)) {
+            echo "Erreur serveur.";
+            exit();
+        }
 
-        // Verifier si il est déjà inscrit
         foreach ($utilisateurs as $user) {
             if ($user['email'] === $email_saisi && $user['mdp'] === $mdp_saisi) {
-                $auth_reussie = true;
-                $user_info = $user;
-                break;
+
+                echo "Connexion réussie";
+                exit();
             }
         }
 
-        if ($auth_reussie) {
-            echo "Bienvenue " . htmlspecialchars($user_info['prenom']) . " ! Connexion réussie.";
-            echo "<script>alert document.location.href='index.php';</script>";
-        } else {
-            echo "Erreur : Email ou mot de passe incorrect.";
-        }
+        echo "Erreur : Email ou mot de passe incorrect.";
     } else {
-        echo "Erreur : Le fichier de base de données JSON est introuvable.";
+        echo "Erreur : fichier introuvable.";
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/Connexion.css" />
+    <script src="Connexion.js"></script>
     <title>Connexion </title>
 </head>
 <body>
-<link rel="stylesheet" href="/css/Connexion.css" />
-<form id="connexion" method="POST">
+
+<form id="connexion" method="POST" action="index.html">
     <h2>Connexion</h2>
 
     <input type="email" name="email" placeholder="Email" required>
