@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($auth_reussie) {
             echo "Bienvenue " . htmlspecialchars($user_info['prenom']) . " ! Connexion réussie.";
-            document.location.replace('index.php');
+            echo "<script>alert document.location.href='index.php';</script>";
         } else {
             echo "Erreur : Email ou mot de passe incorrect.";
         }
