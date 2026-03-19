@@ -1,5 +1,5 @@
 function Connection() {
-    //  Champs du formulaire.
+    //  Champs du formulaire de conn
     const donnees = {
         email: $('#email').val(),
         mdp: $('#password').val()
@@ -16,7 +16,7 @@ function Connection() {
 
 
             if (reponse.includes("réussie")) {
-                window.location.href='index.php'
+                window.location='index.php'
             }
         },
         error: function() {
