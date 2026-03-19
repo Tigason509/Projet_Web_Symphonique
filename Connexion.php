@@ -1,8 +1,8 @@
 <?php
-// On simule ici la lecture de ton fichier JSON
-$file = 'users.json';
 
-// Vérifier si le formulaire a été envoyé
+$file = 'JSON/Client.json';
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email_saisi = $_POST['email'];
     $mdp_saisi = $_POST['mdp'];
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $auth_reussie = false;
         $user_info = null;
 
-        // Parcourir le tableau pour trouver une correspondance
+        // Verifier si il est déjà inscrit
         foreach ($utilisateurs as $user) {
             if ($user['email'] === $email_saisi && $user['mdp'] === $mdp_saisi) {
                 $auth_reussie = true;
@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($auth_reussie) {
             echo "Bienvenue " . htmlspecialchars($user_info['prenom']) . " ! Connexion réussie.";
-            // Ici, tu pourrais démarrer une session : session_start(); $_SESSION['user'] = $user_info;
         } else {
             echo "Erreur : Email ou mot de passe incorrect.";
         }
@@ -45,9 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="stylesheet" href="/css/Connexion.css" />
 <form id="connexion" method="POST">
     <h2>Connexion</h2>
+
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="mdp" placeholder="Mot de passe" required>
     <button type="submit">Se connecter</button>
+    <a href="Inscription.php">S'incrire<a/>
 </form>
 </body>
 </html>
