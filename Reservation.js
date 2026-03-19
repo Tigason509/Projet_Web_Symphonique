@@ -1,4 +1,5 @@
-function getActivites() {
+
+function init() {
     console.log("getA")
     $.ajax({
 
@@ -14,8 +15,23 @@ function getActivites() {
     }).fail(function (e) {
         console.log(e)
     });
-}
-function verifEmail(){
+
+    console.log("getA")
+    $.ajax({
+
+        method: 'GET',
+        dataType :"json",
+        url : 'getReservations.php', //Script Vise
+        data : {"nmax":100}
+    }).done(function (reserv) {
+        console.log(reserv);
+        for(i in reserv){
+            $("#reserv").append("<option>"+reserv[i].nom+"</option>");
+        }
+    }).fail(function (e) {
+        console.log(e)
+    });
+
     console.log()
     $.ajax({
         method:'GET',

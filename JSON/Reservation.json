@@ -1,8 +1,18 @@
 [
   {
-
+  "nom" :"sax" ,
+  "capacite" : "",
+  "date_debut" : "",
+  "date_fin" : "",
+  "id_chambre": "",
+  "capacite_max" : "50"
   },
   {
-
+    "nom" :"flute" ,
+    "capacite" : "",
+    "date_debut" : "",
+    "date_fin" : "",
+    "id_chambre": "",
+    "capacite_max" : "50"
   }
 ]

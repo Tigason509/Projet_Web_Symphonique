@@ -7,7 +7,7 @@
     <script src="Reservation.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body onload="getActivites()">
+<body onload="init()">
 
 <section id="reclamation" class="py-5 bg-white">
     <div class="container">
@@ -18,6 +18,17 @@
                 <div class="p-3 border-start border-4" style="border-color: #b89241 !important; background: #f9f9f9;">
                     <small>Demandes </small>
                 </div>
+            </div>
+            <div class="reservation">
+                <p>Reserver ici</p>
+                <select id="reserv">
+                    <p>Vous etes combien de personnes à réserver ?</p>
+                    <input class="form-control" id="Reservation_n_personnes_Input" placeholder="0">
+                    <p>à partir de quand ?</p>
+
+                    <p>Jusqu'à quand ?</p>
+
+                    <button type="submit" id="envoi_reserv">Reserver !</button>
             </div>
             <h3>
                 Activité
