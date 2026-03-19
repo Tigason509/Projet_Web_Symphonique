@@ -1,41 +1,85 @@
-// Toutes les fonctions d'initialisation
+$(document).ready(function() {
+
+    console.log("JS chargé");
+
+    // INIT
+    init();
+
+    // CLICK bouton
+    $(document).on('click', '#envoi_reservation', function() {
+
+        console.log("CLICK OK");
+
+        const data = {
+            nom: $('#nom').val(),
+            prenom: $('#prenom').val(),
+            email: $('#email').val(),
+            nb_personnes: $('#nb_personnes').val(),
+            debut: $('#debut').val(),
+            fin: $('#fin').val(),
+            activite: $('#activ').val()
+        };
+
+        $.ajax({
+            url: 'Reservation.php',
+            type: 'POST',
+            data: data,
+
+            success: function(res) {
+                console.log("REPONSE :", res);
+                $('#resultat').html(res);
+            },
+
+            error: function() {
+                console.log("ERREUR AJAX");
+                $('#resultat').html("Erreur serveur");
+            }
+        });
+    });
+
+});
+
+
+// INIT
 function init() {
-    console.log("getA")
-    $.ajax({
 
+    console.log("Chargement données...");
+
+    $.ajax({
         method: 'GET',
-        dataType :"json",
-        url : 'getActivites.php', //Script Vise
-        data : {"nmax":2}
+        dataType: "json",
+        url: 'getActivites.php',
+        data: { "nmax": 2 }
+
     }).done(function (activites) {
-        console.log(activites);
-        for(i in activites){
-            $("#activ").append("<option>"+activites[i].nom+"</option>");
+
+        console.log("ACTIVITES :", activites);
+
+        for (let i = 0; i < activites.length; i++) {
+            $("#activ").append("<option>" + activites[i].nom + "</option>");
         }
+
     }).fail(function (e) {
-        console.log(e)
+        console.log("Erreur activites :", e);
     });
 
-    console.log("getA")
-    $.ajax({
 
+
+    $.ajax({
         method: 'GET',
-        dataType :"json",
-        url : 'getReservations.php', //Script Vise
-        data : {"nmax":100}
+        dataType: "json",
+        url: 'getReservations.php',
+        data: { "nmax": 100 }
+
     }).done(function (reserv) {
-        console.log(reserv);
-        for(i in reserv){
-            $("#reserv").append("<option>"+reserv[i].nom+"</option>");
+
+        console.log("RESERV :", reserv);
+
+        for (let i = 0; i < reserv.length; i++) {
+            $("#reserv").append("<option>" + reserv[i].nom + "</option>");
         }
+
     }).fail(function (e) {
-        console.log(e)
+        console.log("Erreur reservations :", e);
     });
-
-    console.log()
-    $.ajax({
-        method:'GET',
-        dataType: "json"
-    })
 }
-

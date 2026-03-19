@@ -1,11 +1,66 @@
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $file = 'JSON/Reservation.json';
+
+    $nom = $_POST['nom'] ;
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'] ;
+    $nb = $_POST['nb_personnes'] ;
+    $debut = $_POST['debut'];
+    $fin = $_POST['fin'] ;
+    $activite = $_POST['activite'] ;
+
+    // Vérification
+    if ($nom === '' || $prenom === '' || $email === '') {
+        echo "Champs obligatoires manquants";
+        exit();
+    }
+
+    // Nouvelle réservation
+    $nouvelle_reservation = [
+            "nom" => $nom,
+            "prenom" => $prenom,
+            "email" => $email,
+            "nb_personnes" => $nb,
+            "debut" => $debut,
+            "fin" => $fin,
+            "activite" => $activite
+    ];
+
+    // Lire le fichier existant
+    if (file_exists($file)) {
+        $json_data = file_get_contents($file);
+        $reservations = json_decode($json_data, true);
+    } else {
+        $reservations = [];
+    }
+
+    // Sécurité
+    if (!is_array($reservations)) {
+        $reservations = [];
+    }
+
+    // Ajouter la nouvelle réservation
+    $reservations[] = $nouvelle_reservation;
+
+    // Réécrire dans le fichier JSON
+    file_put_contents($file, json_encode($reservations, JSON_PRETTY_PRINT));
+
+    echo "Réservation enregistrée avec succès";
+    exit();
+}
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <title>Titre de la page</title>
     <link rel="stylesheet" href="/css/Reservation.css">
-    <script src="Reservation.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="Reservation.js"></script>
 </head>
 <body onload="init()">
 
@@ -19,30 +74,43 @@
                     <small>Demandes </small>
                 </div>
             </div>
+
             <div class="reservation">
-                <p>Reserver ici</p>
-                <select id="reserv">
-                    <p>Votre nom</p>
-                    <input class="form-control" id="nom">
-                    <p>Votre prénom</p>
-                    <input class="form-control" id="prenom">
-                    <p>Vous etes combien de personnes à réserver ?</p>
-                    <input class="form-control" id="Reservation_n_personnes_Input" placeholder="0">
-                    <p>à partir de quand ?</p>
-                    <input type="date" id="debut" name="debut">
-                    <p>Jusqu'à quand ?</p>
-                    <input type="date" id="fin" name="fin">
-                    <button type="submit" id="envoi_reserv">Reserver !</button>
+
+                <p>Votre nom</p>
+                <input id="nom">
+
+                <p>Votre prénom</p>
+                <input id="prenom">
+
+                <p>Email</p>
+                <input id="email">
+
+                <p>Nombre de personnes</p>
+                <input id="nb_personnes">
+
+                <p>Date début</p>
+                <input type="date" id="debut">
+
+                <p>Date fin</p>
+                <input type="date" id="fin">
+
+                <p>Choisir une activité</p>
+                <select id="activ"></select>
+
+                <p>Choisir une réservation</p>
+                <select id="reserv"></select>
+
+                <button id="envoi_reservation">Envoyer</button>
+
             </div>
+
+            </body>
             <h3>
                 Activité
             </h3>
-            <input type="email" class="form-control" id="Reservation_emailInput" placeholder="nom@exemple.com">
-            <select id="activ">
-            </select>
             </div>
         </div>
-        <button type="button" id="envoi_reservation" >Envoyer</button>
     </div>
 </section>
 

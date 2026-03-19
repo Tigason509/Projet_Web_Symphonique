@@ -4,8 +4,8 @@ $file = 'JSON/Client.json';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $email_saisi = $_POST['email']  ;
-    $mdp_saisi = $_POST['mdp']  ;
+    $email_saisi = $_POST['email'];
+    $mdp_saisi = $_POST['mdp'];
 
     if (file_exists($file)) {
 
@@ -30,8 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Erreur : fichier introuvable.";
     }
+
 }
 ?>
+
+
+
+
 
 
 <!DOCTYPE html>

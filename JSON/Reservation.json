@@ -1,18 +1,27 @@
 [
-  {
-  "nom" :"sax" ,
-  "capacite" : "",
-  "date_debut" : "",
-  "date_fin" : "",
-  "id_chambre": "",
-  "capacite_max" : "50"
-  },
-  {
-    "nom" :"flute" ,
-    "capacite" : "",
-    "date_debut" : "",
-    "date_fin" : "",
-    "id_chambre": "",
-    "capacite_max" : "50"
-  }
+    {
+        "nom": "sax",
+        "capacite": "",
+        "date_debut": "",
+        "date_fin": "",
+        "id_chambre": "",
+        "capacite_max": "50"
+    },
+    {
+        "nom": "flute",
+        "capacite": "",
+        "date_debut": "",
+        "date_fin": "",
+        "id_chambre": "",
+        "capacite_max": "50"
+    },
+    {
+        "nom": "Noi",
+        "prenom": "Bak",
+        "email": "JIS@gmail.com",
+        "nb_personnes": "10",
+        "debut": "2023-11-01",
+        "fin": "2002-02-09",
+        "activite": "piano"
+    }
 ]
