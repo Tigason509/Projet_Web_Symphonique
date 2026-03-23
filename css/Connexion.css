@@ -1,16 +1,75 @@
+/* --- Body (aligné avec la base) --- */
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    margin: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #f0f2f5;
 }
+
+/* --- Formulaire --- */
 form {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 0;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    width: 100%;
+    max-width: 400px;
 }
-input { display: block; width: 100%; margin-bottom: 1rem; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
-button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+
+/* --- Champs input --- */
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* Focus cohérent avec .form-control */
+input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 5px rgba(184, 146, 65, 0.3);
+    outline: none;
+}
+
+/* --- Bouton --- */
+button {
+    width: 100%;
+    padding: 12px;
+
+    background-color: var(--gold);
+    color: #ffffff;
+
+    border: 1px solid var(--gold);
+    border-radius: 0;
+
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+/* Hover style premium */
+button:hover {
+    background-color: transparent;
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+/* Focus (accessibilité) */
+button:focus {
+    box-shadow: 0 0 5px rgba(184, 146, 65, 0.3);
+    outline: none;
+}
