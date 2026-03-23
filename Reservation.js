@@ -39,6 +39,27 @@ $(document).ready(function() {
 
 });
 
+const debut = document.getElementById("debut");
+const fin = document.getElementById("fin");
+
+debut.addEventListener("change", () => {
+    fin.min = debut.value;
+});
+
+fin.addEventListener("change", () => {
+    debut.max = fin.value;
+});
+
+function verifierDates() {
+    const debut = document.getElementById("debut").value;
+    const fin = document.getElementById("fin").value;
+
+    if (debut && fin && debut > fin) {
+        alert("La date de début doit être antérieure à la date de fin.");
+        return false;
+    }
+    return true;
+}
 
 // INIT
 function init() {
