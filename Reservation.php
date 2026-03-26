@@ -36,16 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $reservations = [];
     }
-
-    // Sécurité
     if (!is_array($reservations)) {
         $reservations = [];
     }
 
     // Ajouter la nouvelle réservation
     $reservations[] = $nouvelle_reservation;
-
-    // Réécrire dans le fichier JSON
     file_put_contents($file, json_encode($reservations, JSON_PRETTY_PRINT));
 
     echo "Réservation enregistrée avec succès";
