@@ -11,6 +11,12 @@ body {
     height: 100vh;
 }
 
+h2 {
+    font-family: Helvetica;
+    color: #b89241;
+    text-align: center;
+}
+
 /* --- Formulaire --- */
 form {
     background-color: #ffffff;
