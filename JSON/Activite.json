@@ -1,13 +1,14 @@
 [
-  {
-    "nom" : "piano" ,
-    "id" : 1 ,
-    "disponible" : true
-  },
-  {
-    "nom" : "badminton" ,
-    "id" : 2 ,
-    "disponible" : true,
-    "capacite" : 4
-  }
+    {
+        "nom": "piano",
+        "id": 1,
+        "disponible": true,
+        "capacite": 2
+    },
+    {
+        "nom": "badminton",
+        "id": 2,
+        "disponible": true,
+        "capacite": 3
+    }
 ]

@@ -3,20 +3,54 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $file = 'JSON/Reservation.json';
+    $file_activite = 'JSON/Activite.json';
 
     $nom = $_POST['nom'] ;
     $prenom = $_POST['prenom'];
     $email = $_POST['email'] ;
-    $nb = $_POST['nb_personnes'] ;
+    $nb = intval($_POST['nb_personnes']); // AJOUT : Conversion en entier pour le calcul
     $debut = $_POST['debut'];
     $fin = $_POST['fin'] ;
-    $activite = $_POST['activite'] ;
+    $activite_nom = $_POST['activite'] ;
 
     // Vérification
     if ($nom === '' || $prenom === '' || $email === '') {
         echo "Champs obligatoires manquants";
         exit();
     }
+
+    // --- DEBUT DE LA MISE À JOUR DE LA CAPACITÉ (AJOUT) ---
+    if (file_exists($file_activite)) {
+        $activites_data = json_decode(file_get_contents($file_activite), true);
+        $trouve = false;
+
+        foreach ($activites_data as $key => $act) {
+            if ($act['nom'] === $activite_nom) {
+                $trouve = true;
+
+                // On vérifie s'il reste assez de place
+                if ($act['capacite'] >= $nb) {
+                    $activites_data[$key]['capacite'] -= $nb; // SOUSTRACTION DYNAMIQUE
+                } else {
+                    echo "Erreur : Plus assez de places disponibles (reste : " . $act['capacite'] . ")";
+                    exit();
+                }
+                break;
+            }
+        }
+
+        if (!$trouve) {
+            echo "Erreur : L'activité choisie n'existe pas dans le système.";
+            exit();
+        }
+
+        // Sauvegarder la nouvelle capacité AVANT d'enregistrer la réservation
+        file_put_contents($file_activite, json_encode($activites_data, JSON_PRETTY_PRINT));
+    } else {
+        echo "Erreur : Fichier des activités introuvable.";
+        exit();
+    }
+    // --- FIN DE LA MISE À JOUR DE LA CAPACITÉ ---
 
     // Nouvelle réservation
     $nouvelle_reservation = [
@@ -26,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "nb_personnes" => $nb,
             "debut" => $debut,
             "fin" => $fin,
-            "activite" => $activite
+            "activite" => $activite_nom
     ];
 
     // Lire le fichier existant
@@ -36,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $reservations = [];
     }
+
     if (!is_array($reservations)) {
         $reservations = [];
     }
@@ -44,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $reservations[] = $nouvelle_reservation;
     file_put_contents($file, json_encode($reservations, JSON_PRETTY_PRINT));
 
-    echo "Réservation enregistrée avec succès";
+    echo "Réservation enregistrée et capacité mise à jour avec succès !";
     exit();
 }
 ?>
