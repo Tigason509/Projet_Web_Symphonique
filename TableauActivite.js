@@ -1,30 +1,65 @@
-$(document).ready(function () {
-    console.log("JS chargé");
+let isAdmin = false;
 
-    $.ajax({
-        method: 'GET',
-        url: 'getPlanning.php', // Appelle le PHP qui lit le JSON
-        dataType: "json"
-    })
-        .done(function (reservations) {
-            console.log("Données reçues :", reservations);
+$(document).ready(function() {
+    // Gestion de la connexion
+    $('#btn_connexion_admin').on('click', function() {
+        const mail = $('#admin_email_input').val();
+        if (mail === "emailadmin@gmail.com") {
+            isAdmin = true;
+            alert("Mode administrateur activé");
+            $('#admin_zone').hide(); // On cache le formulaire de connexion
+            init(); // On recharge le tableau pour afficher les boutons
+        } else {
+            alert("Accès refusé");
+        }
+    });
 
-            let htmlRows = "";
-            // On boucle sur le tableau de réservations
-            for (let i = 0; i < reservations.length; i++) {
-                htmlRows += "<tr>" +
-                    "<td>" + reservations[i].nom + "</td>" +
-                    "<td>" + reservations[i].prenom + "</td>" +
-                    "<td>" + (reservations[i].activite_t || reservations[i].activite) + "</td>" +
-                    "<td>" + (reservations[i].debut_t || reservations[i].debut) + "</td>" +
-                    "<td>" + (reservations[i].fin_t || reservations[i].fin) + "</td>" +
-                    "</tr>";
-            }
-            // On ajoute toutes les lignes d'un coup dans le tbody
-            $("#corps_tableau").html(htmlRows);
-        })
-        .fail(function (status, error) {
-            console.log("Erreur AJAX : " + error);
-            $("#corps_tableau").html("<tr><td colspan='5'>Erreur de chargement</td></tr>");
-        });
+
+    $(document).on('click', '.btn-supprimer', function() {
+        const index = $(this).data('index');
+        if (confirm("Supprimer cette réservation ?")) {
+            supprimerReservation(index);
+        }
+    });
 });
+
+function init() {
+    $.ajax({
+        url: 'getReservations.php',
+        method: 'GET',
+        dataType: 'json'
+    }).done(function(reserv) {
+        $("#corps_tableau").empty();
+
+        reserv.forEach((res, index) => {
+            let boutonSuppr = "";
+            // SI ADMIN : On ajoute le bouton
+            if (isAdmin) {
+                boutonSuppr = `<td><button class="btn-supprimer" data-index="${index}" style="background: #e74c3c; color: white; padding: 5px 10px;">Supprimer</button></td>`;
+            }
+
+            $("#corps_tableau").append(`
+                <tr>
+                    <td>${res.nom}</td>
+                    <td>${res.prenom}</td>
+                    <td>${res.activite}</td>
+                    <td>${res.debut}</td>
+                    <td>${res.fin}</td>
+                    ${boutonSuppr}
+                </tr>
+            `);
+        });
+    });
+}
+
+function supprimerReservation(index) {
+    $.ajax({
+        url: 'SupprimerReservation.php',
+        type: 'POST',
+        data: { index: index, admin_email: "emailadmin@gmail.com" },
+        success: function(res) {
+            alert(res);
+            init();
+        }
+    });
+}

@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Connexion réussie";
                 exit();
             }
+
         }
 
         echo "Erreur : Email ou mot de passe incorrect.";
