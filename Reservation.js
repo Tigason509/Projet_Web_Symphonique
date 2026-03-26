@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     console.log("JS chargé");
 
-    // INIT
+    // INIT fonction globale pour l'initialisation
     init();
 
     // CLICK bouton
