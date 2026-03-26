@@ -2,6 +2,7 @@
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $file='JSON/Reservation.json';
     $file2='JSON/Activite.json';
+    $file_activite=json_decode(file_get_contents($file2),true);
     $n=$_POST['nb_personnes'];
     $capacite=$_POST['capacite'];
     if ( $n<$capacite){
