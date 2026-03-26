@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input id="prenom">
 
                 <p>Email</p>
-                <input id="email">
+                <input type="email" id="email">
 
                 <p>Nombre de personnes</p>
                 <input type="number" id="nb_personnes">
