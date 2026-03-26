@@ -42,30 +42,19 @@ input:focus {
     outline: none;
 }
 
-/* --- Bouton --- */
+/* Bouton */
 button {
-    width: 100%;
-    padding: 12px;
-
-    background-color: var(--gold);
-    color: #ffffff;
-
-    border: 1px solid var(--gold);
-    border-radius: 0;
-
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-
+    padding: 12px 20px;
+    background-color: #b89241;
+    color: white;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: 0.3s;
 }
 
-/* Hover style premium */
 button:hover {
-    background-color: white;
-    color: var(--gold);
-    border-color: var(--gold);
+    background-color: #9c7734;
 }
 
 /* Focus (accessibilité) */
