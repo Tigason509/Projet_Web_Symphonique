@@ -23,7 +23,7 @@ $(document).ready(function () {
             // On ajoute toutes les lignes d'un coup dans le tbody
             $("#corps_tableau").html(htmlRows);
         })
-        .fail(function (xhr, status, error) {
+        .fail(function (status, error) {
             console.log("Erreur AJAX : " + error);
             $("#corps_tableau").html("<tr><td colspan='5'>Erreur de chargement</td></tr>");
         });
