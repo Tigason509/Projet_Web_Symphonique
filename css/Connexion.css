@@ -63,7 +63,7 @@ button {
 
 /* Hover style premium */
 button:hover {
-    background-color: transparent;
+    background-color: white;
     color: var(--gold);
     border-color: var(--gold);
 }
