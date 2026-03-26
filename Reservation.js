@@ -57,7 +57,7 @@ function verifierDates() {
     const fin = document.getElementById("fin").value;
     const today = new Date().toISOString().split("T")[0];
 
-    if (debut && fin && debut > fin) {
+    if (debut > fin) {
         alert("La date de début doit être antérieure à la date de fin.");
         return false;
     }
