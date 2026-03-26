@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input id="email">
 
                 <p>Nombre de personnes</p>
-                <input id="nb_personnes">
+                <input type="number" id="nb_personnes">
 
                 <p>Date début</p>
                 <input type="date" id="debut">
