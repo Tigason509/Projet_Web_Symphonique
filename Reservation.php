@@ -141,8 +141,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <select id="activ" required>
                     <option value="">Chargement...</option>
                 </select>
-
-                <!-- CORRECTION : Retirer le onclick qui redirige immédiatement -->
                 <button id="envoi_reservation">Envoyer la réservation</button>
 
                 <div id="resultat" style="margin-top: 15px; padding: 10px;"></div>

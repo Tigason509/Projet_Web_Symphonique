@@ -12,10 +12,9 @@ $(document).ready(function() {
         fin.addEventListener("change", () => { debut.max = fin.value; });
     }
 
-    // Charger les activités dans le select
     initFormulaire();
 
-    // Envoi du formulaire - CORRECTION : Sans onclick dans le HTML
+    // Envoi du formulaire
     $(document).on('click', '#envoi_reservation', function(e) {
         e.preventDefault(); // Empêcher le comportement par défaut
 
@@ -80,10 +79,7 @@ function initFormulaire() {
                 $("#activ").append("<option value=''>Aucune activité disponible</option>");
             }
         },
-        error: function(xhr, status, error) {
-            console.error("Erreur chargement activités:", error);
-            $("#activ").empty().append("<option value=''>Erreur de chargement</option>");
-        }
+
     });
 }
 
