@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Choisir une réservation</p>
                 <select id="reserv"></select>
 
-                <button id="envoi_reservation">Envoyer</button>
+                <button id="envoi_reservation" onclick="verifierDates()">Envoyer</button>
 
             </div>
 
