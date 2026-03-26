@@ -1,4 +1,17 @@
 <?php
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $file='JSON/Reservation.json';
+    $file2='JSON/Activite.json';
+    $n=$_POST['nb_personnes'];
+    $capacite=$_POST['capacite'];
+    if ( $n<$capacite){
+        echo("Activite complète") ;
+        exit();
+    }
+    else{
+        $capacite=$capacite-$n;
+    }
+}
 ?>
 <!doctype html>
 <html lang="fr">
