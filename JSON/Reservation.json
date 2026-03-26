@@ -23,6 +23,23 @@
         "debut": "2023-11-01",
         "fin": "2002-02-09",
         "activite": "piano"
+    },
+    {
+        "nom": "Pepito",
+        "prenom": "Chocolat",
+        "email": "PChoco@yahoo.fr",
+        "nb_personnes": "7",
+        "debut": "2026-03-13",
+        "fin": "2026-03-28",
+        "activite": "piano"
+    },
+    {
+        "nom": "bnsb",
+        "prenom": "snbb",
+        "email": "sjkl@ecosia.fr",
+        "nb_personnes": "9",
+        "debut": "2026-03-28",
+        "fin": "2026-04-03",
+        "activite": "piano"
     }
-
 ]

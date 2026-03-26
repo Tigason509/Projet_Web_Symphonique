@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input id="prenom">
 
                 <p>Email</p>
-                <input type="email" id="email">
+                <input id="email">
 
                 <p>Nombre de personnes</p>
                 <input type="number" id="nb_personnes">
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Choisir une réservation</p>
                 <select id="reserv"></select>
 
-                <button id="envoi_reservation" onclick="verifierDates()">Envoyer</button>
+                <button id="envoi_reservation" onclick="document.location='TableauActivite.php'">Envoyer</button>
 
             </div>
 
