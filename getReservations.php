@@ -1,8 +1,19 @@
 <?php
-$file='JSON/Reservation.json' ;
-$donnes=json_decode(file_get_contents($file),true);
-// ici filtrer si besoin
-$donnes = array_slice($donnes, 0, $_GET['nmax']) ;
-echo json_encode($donnes);
-//var_dump( $donnes ); #affichage des données présentes dans le fichier JSON
-?><?php
+header('Content-Type: application/json'); // Indique au navigateur qu'on envoie du JSON
+
+$file = 'JSON/Reservation.json';
+
+if (file_exists($file)) {
+    $data = file_get_contents($file);
+    // Si le fichier est vide, on renvoie un tableau vide
+    if (trim($data) === "") {
+        echo json_encode([]);
+    } else {
+        echo $data;
+    }
+} else {
+    // Si le fichier n'existe pas encore, on renvoie un tableau vide
+    echo json_encode([]);
+}
+exit();
+?>

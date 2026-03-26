@@ -5,21 +5,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $file = 'JSON/Reservation.json';
     $file_activite = 'JSON/Activite.json';
 
-    $nom = $_POST['nom'] ;
-    $prenom = $_POST['prenom'];
+    $nom = $_POST['nom']  ;
+    $prenom = $_POST['prenom'] ;
     $email = $_POST['email'] ;
-    $nb = intval($_POST['nb_personnes']); // AJOUT : Conversion en entier pour le calcul
-    $debut = $_POST['debut'];
+    $nb = intval($_POST['nb_personnes'] );
+    $debut = $_POST['debut'] ;
     $fin = $_POST['fin'] ;
     $activite_nom = $_POST['activite'] ;
 
-    // Vérification
-    if ($nom === '' || $prenom === '' || $email === '') {
-        echo "Champs obligatoires manquants";
+    // Vérification des champs obligatoires
+    if ($nom === '' || $prenom === '' || $email === '' || $activite_nom === '' || $nb <= 0) {
+        echo "Erreur : Tous les champs sont obligatoires";
         exit();
     }
 
-    // --- DEBUT DE LA MISE À JOUR DE LA CAPACITÉ (AJOUT) ---
+    // Vérification des dates
+    if ($debut === '' || $fin === '') {
+        echo "Erreur : Les dates sont obligatoires";
+        exit();
+    }
+
+    if ($debut > $fin) {
+        echo "Erreur : La date de début doit être avant la date de fin";
+        exit();
+    }
+
+    // --- MISE À JOUR DE LA CAPACITÉ ---
     if (file_exists($file_activite)) {
         $activites_data = json_decode(file_get_contents($file_activite), true);
         $trouve = false;
@@ -28,11 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($act['nom'] === $activite_nom) {
                 $trouve = true;
 
-                // On vérifie s'il reste assez de place
+                // Vérifier s'il reste assez de places
                 if ($act['capacite'] >= $nb) {
-                    $activites_data[$key]['capacite'] -= $nb; // SOUSTRACTION DYNAMIQUE
+                    $activites_data[$key]['capacite'] -= $nb;
                 } else {
-                    echo "Erreur : Plus assez de places disponibles (reste : " . $act['capacite'] . ")";
+                    echo "Erreur : Plus assez de places disponibles (reste : " . $act['capacite'] . " places)";
                     exit();
                 }
                 break;
@@ -44,13 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        // Sauvegarder la nouvelle capacité AVANT d'enregistrer la réservation
+        // Sauvegarder la nouvelle capacité
         file_put_contents($file_activite, json_encode($activites_data, JSON_PRETTY_PRINT));
     } else {
         echo "Erreur : Fichier des activités introuvable.";
         exit();
     }
-    // --- FIN DE LA MISE À JOUR DE LA CAPACITÉ ---
 
     // Nouvelle réservation
     $nouvelle_reservation = [
@@ -88,58 +98,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Titre de la page</title>
+    <title>Réservation d'activité</title>
     <link rel="stylesheet" href="/css/Reservation.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="Reservation.js"></script>
 </head>
-<body onload="init()">
+<body>
 
 <section id="reclamation" class="py-5 bg-white">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 mb-4 mb-lg-0">
                 <h2 style="font-family: 'Georgia', serif; color: #b89241;">Vous souhaitez explorer notre grand catalogue de séjour ?</h2>
-                <p class="text-muted">Nous avons un grand panel d'activités à vous proposer, n'hésitez à découvrir de nouvelles activités!</p>
+                <p class="text-muted">Nous avons un grand panel d'activités à vous proposer, n'hésitez pas à découvrir de nouvelles activités!</p>
                 <div class="p-3 border-start border-4" style="border-color: #b89241 !important; background: #f9f9f9;">
-                    <small>Demandes </small>
+                    <small>Demandes</small>
                 </div>
             </div>
 
             <div class="reservation">
+                <h3>Formulaire de réservation</h3>
 
                 <p>Votre nom</p>
-                <input id="nom">
+                <input id="nom" type="text" required>
 
                 <p>Votre prénom</p>
-                <input id="prenom">
+                <input id="prenom" type="text" required>
 
                 <p>Email</p>
-                <input type="email" id="email">
+                <input type="email" id="email" required>
 
                 <p>Nombre de personnes</p>
-                <input type="number" id="nb_personnes">
+                <input type="number" id="nb_personnes" min="1" required>
 
                 <p>Date début</p>
-                <input type="date" id="debut">
+                <input type="date" id="debut" required>
 
                 <p>Date fin</p>
-                <input type="date" id="fin">
+                <input type="date" id="fin" required>
 
                 <p>Choisir une activité</p>
-                <select id="activ"></select>
+                <select id="activ" required>
+                    <option value="">Chargement...</option>
+                </select>
 
-                <p>Choisir une réservation</p>
-                <select id="reserv"></select>
+                <!-- CORRECTION : Retirer le onclick qui redirige immédiatement -->
+                <button id="envoi_reservation">Envoyer la réservation</button>
 
-                <button id="envoi_reservation" onclick="document.location='TableauActivite.php'">Envoyer</button>
-
-            </div>
-
-            </body>
-            <h3>
-                Activité
-            </h3>
+                <div id="resultat" style="margin-top: 15px; padding: 10px;"></div>
             </div>
         </div>
     </div>

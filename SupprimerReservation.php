@@ -3,8 +3,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $file = 'JSON/Reservation.json';
     $index = $_POST['index'];
     $admin_email = $_POST['admin_email'];
-
-    // SÉCURITÉ : On vérifie l'email côté serveur aussi
     if ($admin_email !== "emailadmin@gmail.com") {
         echo "Erreur : Non autorisé.";
         exit();

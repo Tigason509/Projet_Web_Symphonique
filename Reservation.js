@@ -1,14 +1,25 @@
 $(document).ready(function() {
+    console.log("JS Réservation chargé");
 
-    console.log("JS chargé");
+    // Initialisation des dates
+    const today = new Date().toISOString().split("T")[0];
+    if($('#debut').length > 0) {
+        document.getElementById("debut").min = today;
+        const debut = document.getElementById("debut");
+        const fin = document.getElementById("fin");
 
-    // INIT fonction globale pour l'initialisation
-    init();
+        debut.addEventListener("change", () => { fin.min = debut.value; });
+        fin.addEventListener("change", () => { debut.max = fin.value; });
+    }
 
-    // CLICK bouton
-    $(document).on('click', '#envoi_reservation', function() {
+    // Charger les activités dans le select
+    initFormulaire();
 
-        console.log("CLICK OK");
+    // Envoi du formulaire - CORRECTION : Sans onclick dans le HTML
+    $(document).on('click', '#envoi_reservation', function(e) {
+        e.preventDefault(); // Empêcher le comportement par défaut
+
+        if (!verifierDates()) return;
 
         const data = {
             nom: $('#nom').val(),
@@ -24,90 +35,68 @@ $(document).ready(function() {
             url: 'Reservation.php',
             type: 'POST',
             data: data,
-
             success: function(res) {
-                console.log("REPONSE :", res);
-                $('#resultat').html(res);
-            },
+                console.log("Réponse du serveur:", res);
 
-            error: function() {
-                console.log("ERREUR AJAX");
-                $('#resultat').html("Erreur serveur");
+                // Afficher le résultat
+                const color = res.includes("Erreur") ? "text-danger" : "text-success";
+
+                // Créer la zone de résultat si elle n'existe pas
+                if ($('#resultat').length === 0) {
+                    $('.reservation').append('<div id="resultat" style="margin-top: 15px; padding: 10px; border-radius: 5px;"></div>');
+                }
+
+                $('#resultat').removeClass().addClass(color).html(res);
+
+                // Si succès, rediriger après 1.5s
+                if (!res.includes("Erreur")) {
+                    setTimeout(() => {
+                        window.location.href = 'TableauActivite.php';
+                    }, 1500);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Erreur AJAX:", error);
+                alert("Erreur lors de l'envoi de la réservation.");
             }
         });
     });
-
 });
 
-const today = new Date().toISOString().split("T")[0];
-document.getElementById("debut").min = today;
-const debut = document.getElementById("debut");
-const fin = document.getElementById("fin");
+function initFormulaire() {
+    $.ajax({
+        method: 'GET',
+        url: 'getActivites.php',
+        dataType: "json",
+        success: function(activites) {
+            console.log("Activités chargées:", activites);
+            $("#activ").empty().append("<option value=''>Choisir une activité</option>");
 
-debut.addEventListener("change", () => {
-    fin.min = debut.value;
-});
-
-fin.addEventListener("change", () => {
-    debut.max = fin.value;
-});
+            if (activites && activites.length > 0) {
+                $.each(activites, function(i, act) {
+                    $("#activ").append(`<option value="${act.nom}">${act.nom} (${act.capacite} places)</option>`);
+                });
+            } else {
+                $("#activ").append("<option value=''>Aucune activité disponible</option>");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Erreur chargement activités:", error);
+            $("#activ").empty().append("<option value=''>Erreur de chargement</option>");
+        }
+    });
+}
 
 function verifierDates() {
-    const debut = document.getElementById("debut").value;
-    const fin = document.getElementById("fin").value;
-    const today = new Date().toISOString().split("T")[0];
-
-    if (debut > fin) {
-        alert("La date de début doit être antérieure à la date de fin.");
+    const d = $('#debut').val();
+    const f = $('#fin').val();
+    if (!d || !f) {
+        alert("Merci de choisir des dates.");
         return false;
     }
-    if (today > debut) {
-        alert("Veuillez choisir une date à partir d'aujourd'hui.");
+    if (d > f) {
+        alert("La date de début doit être avant la fin.");
         return false;
     }
     return true;
-}
-
-// INIT
-function init() {
-
-    console.log("Chargement données...");
-
-    $.ajax({
-        method: 'GET',
-        dataType: "json",
-        url: 'getActivites.php',
-        data: { "nmax": 2 }
-
-    }).done(function (activites) {
-
-        console.log("ACTIVITES :", activites);
-
-        for (let i = 0; i < activites.length; i++) {
-            $("#activ").append("<option>" + activites[i].nom + "</option>");
-        }
-
-    }).fail(function (e) {
-        console.log("Erreur activites :", e);
-    });
-
-
-
-    $.ajax({
-        method: 'GET',
-        dataType: "json",
-        url: 'getReservations.php',
-        data: { "nmax": 100 }
-
-    }).done(function (reserv) {
-
-        console.log("RESERV :", reserv);
-
-        for (let i = 0; i < reserv.length; i++) {
-            $("#reserv").append("<option>" + reserv[i].nom + "</option>");
-        }
-
-    }).fail(function (e) {
-        console.log("Erreur reservations :", e);
-    });
 }
