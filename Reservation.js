@@ -39,6 +39,8 @@ $(document).ready(function() {
 
 });
 
+const today = new Date().toISOString().split("T")[0];
+document.getElementById("debut").min = today;
 const debut = document.getElementById("debut");
 const fin = document.getElementById("fin");
 
@@ -53,9 +55,14 @@ fin.addEventListener("change", () => {
 function verifierDates() {
     const debut = document.getElementById("debut").value;
     const fin = document.getElementById("fin").value;
+    const today = new Date().toISOString().split("T")[0];
 
     if (debut && fin && debut > fin) {
         alert("La date de début doit être antérieure à la date de fin.");
+        return false;
+    }
+    if (today > debut) {
+        alert("Veuillez choisir une date à partir d'aujourd'hui.");
         return false;
     }
     return true;
