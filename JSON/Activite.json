@@ -3,7 +3,7 @@
         "nom": "piano",
         "id": 1,
         "disponible": true,
-        "capacite": 5
+        "capacite": 3
     },
     {
         "nom": "badminton",
