@@ -1,0 +1,86 @@
+/* Configuration générale */
+body {
+    background-color: #1d1d1d;
+    color: #f4f4f4;
+    font-family: 'Inter', 'Trebuchet MS', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+h1 {
+    color: #d4af37;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    margin-top: 40px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+/* Conteneur de la table */
+table {
+    width: 90%;
+    max-width: 1000px;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background: #252525; /* Fond plein pour plus de clarté */
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+thead {
+    background: #b89241; /* Couleur unie pour faire moins sophistiqué que le dégradé */
+    color: #ffffff;
+}
+
+th {
+    padding: 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left; /* Alignement à gauche plus naturel pour la lecture */
+}
+
+/* Cellules du tableau */
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+/* Effets de lignes */
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    transition: 0.2s;
+}
+
+
+
+
+.reservation {
+    background: #252525;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 50px;
+}
+
+
+button {
+    background: #b89241;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #d4af37;
+}

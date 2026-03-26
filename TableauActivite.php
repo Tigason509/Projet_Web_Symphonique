@@ -21,6 +21,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <title>Tableau des activités</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="TableauActivite.js"></script>
+    <link rel="stylesheet" href="/css/TableauReservation.css">
 </head>
 <body>
 <h1>Liste des réservations</h1>
