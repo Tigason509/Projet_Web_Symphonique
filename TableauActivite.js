@@ -20,7 +20,6 @@ $(document).ready(function() {
         }
     });
 
-    // Suppression (Délégation de clic pour les boutons créés après l'init)
     $(document).on('click', '.btn-supprimer', function() {
         const index = $(this).data('index');
         if (confirm("Supprimer définitivement cette réservation ?")) {
@@ -67,16 +66,16 @@ function initTableau() {
                             <td>${res.activite}</td>
                             <td>${res.debut}</td>
                             <td>${res.fin}</td>
-                            ${boutonSuppr}
+                            ${boutonSuppr} // Bouton présent que si l'ultisateur est un admin
                         </tr>
                     `);
                 });
-            } else {
+            } else { // Si Aucune reservation est présente dans le Json
                 const colspan = isAdmin ? 6 : 5;
                 corps.append(`<tr><td colspan="${colspan}" style="text-align: center;">Aucune réservation trouvée</td></tr>`);
             }
         },
-        error: function(xhr, status, error) {
+        error: function(status, error) {
             console.error("Erreur chargement:", error);
             $("#corps_tableau").html("<tr><td colspan='5' style='text-align: center; color: red;'>Erreur de chargement des données.</td></tr>");
         }
