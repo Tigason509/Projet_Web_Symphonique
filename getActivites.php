@@ -15,9 +15,6 @@ if (file_exists($file)) {
     } else {
         echo $data;
     }
-} else {
-    error_log("Fichier Activite.json introuvable au chemin: " . realpath('.') . '/JSON/Activite.json');
-    echo json_encode([]);
 }
 exit();
 ?>
