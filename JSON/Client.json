@@ -1,8 +1,14 @@
 [
-  {
-    "email": "emailadmin@gmail.com",
-    "mdp": "motdepasse",
-    "nom" : "administrateur",
-    "prenom": "nom_administrateur"
-  }
+    {
+        "email": "emailadmin@gmail.com",
+        "mdp": "motdepasse",
+        "nom": "administrateur",
+        "prenom": "nom_administrateur"
+    },
+    {
+        "nom": "nsqj",
+        "prenom": "njksl",
+        "email": "nskj@gmail.com",
+        "mdp": "KOKAPOJDZ"
+    }
 ]

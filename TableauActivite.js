@@ -4,14 +4,14 @@ $(document).ready(function() {
     console.log("JS Tableau chargé");
     initTableau();
 
-    // Connexion Admin
     $(document).on('click', '#btn_connexion_admin', function() {
         const mail = $('#admin_email_input').val();
-        if (mail === "emailadmin@gmail.com") {
+        const mot_de_passe=$('#admin_mdp_input').val() ;
+        if (mail === "emailadmin@gmail.com" && mot_de_passe==="motdepasse") {
             isAdmin = true;
             $('#admin_zone').html('<div class="alert alert-success m-0">Accès Admin Accordé</div>');
 
-            // Recharger le tableau pour afficher les boutons supprimer
+            // Rechargement de notre tableau
             setTimeout(function() {
                 initTableau();
             }, 500);
@@ -50,7 +50,7 @@ function initTableau() {
         success: function(reserv) {
             console.log("Réservations chargées:", reserv);
             const corps = $("#corps_tableau");
-            corps.empty();
+            corps.empty(); // S'assurer que des informations ne soient pas stockés en double
 
             if (reserv && reserv.length > 0) {
                 $.each(reserv, function(index, res) {
@@ -70,7 +70,7 @@ function initTableau() {
                         </tr>
                     `);
                 });
-            } else { // Si Aucune reservation est présente dans le Json
+            } else {
                 const colspan = isAdmin ? 6 : 5;
                 corps.append(`<tr><td colspan="${colspan}" style="text-align: center;">Aucune réservation trouvée</td></tr>`);
             }

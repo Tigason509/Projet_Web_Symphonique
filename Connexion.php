@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $json_data = file_get_contents($file);
         $utilisateurs = json_decode($json_data, true);
 
-        // Sécurité JSON
         if (!is_array($utilisateurs)) {
             echo "Erreur serveur.";
             exit();
@@ -56,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="mdp" placeholder="Mot de passe" required>
     <button type="submit">Se connecter</button>
-    <button type="submit" onclick="document.location='Reservation.php'">S'inscrire<a/>
+    <button type="submit" onclick="document.location='Inscription.php'">S'inscrire<a/>
 </form>
 </body>
 </html>

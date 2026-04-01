@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // Vérifier s'il reste assez de places
                 if ($act['capacite'] >= $nb) {
-                    $activites_data[$key]['capacite'] -= $nb;
+                    $activites_data[$key]['capacite'] -= $nb; // on met le nombre de personnes en faisant cette soustration
                 } else {
                     echo "Erreur : Plus assez de places disponibles (reste : " . $act['capacite'] . " places)";
                     exit();

@@ -13,6 +13,7 @@
 <div id="admin_zone" style="background: #252525; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #b89241;">
     <p style="margin: 0 0 10px 0; color: #d4af37;">Accès Administrateur</p>
     <input type="email" id="admin_email_input" placeholder="Email admin" style="width: auto; margin: 0;">
+    <input type="password" id="admin_mdp_input" placeholder="Mot de passe associé" style="width : auto; margin: 0;" >
     <button id="btn_connexion_admin" style="width: auto; margin-left: 10px;">Se connecter</button>
 </div>
 

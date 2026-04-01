@@ -3,13 +3,15 @@
     "id" : 1,
     "capacite": 5,
     "disponible" : true,
-    "n_personnes" : 0
+    "n_personnes" : 0,
+    "client": null
 
   } ,
   {
     "id" : 2,
     "capacite": 5,
     "disponible" : true,
-    "n_personnes" : 0
+    "n_personnes" : 0,
+    "client" : null
   }
 ]
