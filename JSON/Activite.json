@@ -3,7 +3,7 @@
         "nom": "piano",
         "id": 1,
         "disponible": true,
-        "capacite": 3,
+        "capacite": 2,
         "capacite_max": 3
     },
     {

@@ -4,6 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $file = 'JSON/Reservation.json';
     $file_activite = 'JSON/Activite.json';
+    $file_clients = 'JSON/Client.json';
 
     $nom = $_POST['nom']  ;
     $prenom = $_POST['prenom'] ;
@@ -16,6 +17,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérification des champs obligatoires
     if ($nom === '' || $prenom === '' || $email === '' || $activite_nom === '' || $nb <= 0) {
         echo "Erreur : Tous les champs sont obligatoires";
+        exit();
+    }
+    if (file_exists($file_clients)) {
+        $clients_data = json_decode(file_get_contents($file_clients), true) ;
+        $client_existe = false;
+
+        foreach ($clients_data as $client) {
+            // On vérifie si l'email ET le prénom correspondent
+            if ($client['email'] === $email && $client['prenom'] === $prenom) {
+                $client_existe = true;
+                break;
+            }
+        }
+
+        if (!$client_existe) {
+            echo "Erreur : Aucun compte trouvé avec cet email et ce prénom. Veuillez vous inscrire.";
+            exit();
+        }
+    } else {
+        echo "Erreur : Base de données clients inaccessible.";
         exit();
     }
 
