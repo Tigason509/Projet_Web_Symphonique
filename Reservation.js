@@ -54,7 +54,7 @@ $(document).ready(function() {
                     }, 1500);
                 }
             },
-            error: function(xhr, status, error) {
+            error: function( status, error) {
                 console.error("Erreur AJAX:", error);
                 alert("Erreur lors de l'envoi de la réservation.");
             }
