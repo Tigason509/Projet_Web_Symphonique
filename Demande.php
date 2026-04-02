@@ -1,68 +1,56 @@
 <?php
-// On définit les chemins des fichiers
-$file_chambres = 'JSON/Chambre.json';
-$file_demandes = 'JSON/Demande.json';
-$file_clients = 'JSON/Client.json';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $file_chambres = 'JSON/Chambre.json';
+    $file_clients = 'JSON/Client.json';
+    $file_demandes = 'JSON/Demande.json'; // Chemin vers vos demandes
 
-    // Récupération sécurisée des données
-    $nom = htmlspecialchars($_POST['nom'] );
-    $prenom = htmlspecialchars($_POST['prenom'] );
-    $email = $_POST['email'] ;
-    $nb = intval($_POST['nb_personnes'] );
-    $debut = $_POST['debut'] ;
-    $fin = $_POST['fin'] ;
-    $chambre_id = intval($_POST['chambre'] );
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+    $nb = intval($_POST['nb_personnes']);
+    $debut = $_POST['debut'];
+    $fin = $_POST['fin'];
+    $chambre_id = intval($_POST['chambre']);
 
-    // 1. Validation de sécurité
-    if (empty($nom) || empty($prenom) || empty($email) || $chambre_id === 0 || $nb <= 0) {
-        echo "Erreur : Tous les champs sont obligatoires.";
-        exit();
-    }
-
-    // 2. Vérification du client dans Client.json
+    // 1. Validation (Email/Prénom client)
     if (file_exists($file_clients)) {
-        $clients = json_decode(file_get_contents($file_clients), true);
-        $client_valide = false;
-        foreach ($clients as $c) {
-            if ($c['email'] === $email && $c['prenom'] === $prenom) {
-                $client_valide = true;
+        $clients_data = json_decode(file_get_contents($file_clients), true);
+        $client_existe = false;
+        foreach ($clients_data as $client) {
+            if ($client['email'] === $email && $client['prenom'] === $prenom) {
+                $client_existe = true;
                 break;
             }
         }
-        if (!$client_valide) {
+        if (!$client_existe) {
             echo "Erreur : Aucun compte trouvé. Veuillez vous inscrire.";
             exit();
         }
     }
 
-    // 3. Mise à jour de la capacité dans Chambre.json
+    // 2. Vérification des dates
+    if ($debut > $fin) {
+        echo "Erreur : La date de début est après la fin.";
+        exit();
+    }
+
+    // 3. MISE À JOUR DE LA CAPACITÉ (Stock réel)
     if (file_exists($file_chambres)) {
         $chambres = json_decode(file_get_contents($file_chambres), true);
-        $chambre_trouvee = false;
-
-        foreach ($chambres as &$ch) {
-            if (intval($ch['id']) === $chambre_id) {
-                $chambre_trouvee = true;
-                if ($ch['capacite'] >= $nb) {
-                    $ch['capacite'] -= $nb;
+        foreach ($chambres as $key => $c) {
+            if ($c['id'] === $chambre_id) {
+                if ($c['capacite'] >= $nb) {
+                    $chambres[$key]['capacite'] -= $nb;
                 } else {
-                    echo "Erreur : Plus assez de places (Reste : " . $ch['capacite'] . ").";
+                    echo "Erreur : Plus assez de place.";
                     exit();
                 }
-                break;
             }
         }
-        if (!$chambre_trouvee) {
-            echo "Erreur : Chambre ID $chambre_id introuvable.";
-            exit();
-        }
-        // On enregistre la nouvelle capacité
         file_put_contents($file_chambres, json_encode($chambres, JSON_PRETTY_PRINT));
     }
 
-    // 4. Écriture de la nouvelle ligne dans Demande.json
+    // 4. ENREGISTREMENT DANS DEMANDE.JSON (Pour l'affichage admin)
     $nouvelle_demande = [
         "nom" => $nom,
         "prenom" => $prenom,
@@ -70,20 +58,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "fin" => $fin,
         "id_chambre" => $chambre_id,
         "nb_personnes" => $nb,
-        "statut" => "en attente"
+        "statut" => "en attente" // Crucial pour l'affichage
     ];
 
-    $demandes_actuelles = [];
-    if (file_exists($file_demandes)) {
-        $demandes_actuelles = json_decode(file_get_contents($file_demandes), true) ;
-    }
+    $demandes_existantes = file_exists($file_demandes) ? json_decode(file_get_contents($file_demandes), true) : [];
+    $demandes_existantes[] = $nouvelle_demande;
 
-    $demandes_actuelles[] = $nouvelle_demande;
+    file_put_contents($file_demandes, json_encode($demandes_existantes, JSON_PRETTY_PRINT));
 
-    if (file_put_contents($file_demandes, json_encode($demandes_actuelles, JSON_PRETTY_PRINT))) {
-        echo "Succès : Votre réservation est enregistrée.";
-    } else {
-        echo "Erreur : Impossible d'écrire dans le fichier Demande.json.";
-    }
+    echo "Réservation envoyée ! En attente de validation.";
     exit();
 }
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Administration des Réservations</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Reservation.css">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <h2 class="mb-4">Tableau de bord Administrateur</h2>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <label for="adminEmail">Email de session :</label>
+            <input type="email" id="adminEmail" class="form-control d-inline-block w-auto" placeholder="admin@hotel.com">
+            <p class="text-muted small mt-2">Les actions ne seront autorisées que si l'email correspond à l'admin.</p>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" id="table-demandes">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Client</th>
+                        <th>Chambre</th>
+                        <th>Dates</th>
+                        <th>Voyageurs</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="DemandeAdmin.js"></script>
+</body>
+</html>

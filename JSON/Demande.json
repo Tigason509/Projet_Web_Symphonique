@@ -25,5 +25,14 @@
         "id_chambre": 1,
         "nb_personnes": 1,
         "statut": "en attente"
+    },
+    {
+        "nom": "par",
+        "prenom": "ex",
+        "debut": "2026-04-16",
+        "fin": "2026-04-30",
+        "id_chambre": 2,
+        "nb_personnes": 1,
+        "statut": "en attente"
     }
 ]
