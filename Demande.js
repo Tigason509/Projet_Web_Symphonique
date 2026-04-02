@@ -35,19 +35,17 @@ $(document).ready(function() {
         });
     }
 
-    // ✅ Fonction accepter
     window.valider = function(index) {
         $.post('GestionAdmin.php', { index: index, action: 'accepter' }, function(response) {
             $('#resultat').html('<div class="alert alert-success">' + response + '</div>');
-            chargerTableau();  // ✅ Recharge le tableau
+            chargerTableau();
         });
     };
 
-    // ✅ Fonction refuser
     window.refuser = function(index) {
         $.post('GestionAdmin.php', { index: index, action: 'refuser' }, function(response) {
             $('#resultat').html('<div class="alert alert-danger">' + response + '</div>');
-            chargerTableau();  // ✅ Recharge le tableau
+            chargerTableau();
         });
     };
 });
