@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $chambres_data = json_decode(file_get_contents($file), true);
         $trouve = false;
 
-        foreach ($chambres_data as $key => $id) {
+        foreach ($chambres_data as $key => $c) {
             if ($c['id'] === $chambre_id) {
                 $trouve = true;
 
