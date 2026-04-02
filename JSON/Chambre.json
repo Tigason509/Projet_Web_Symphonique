@@ -8,7 +8,7 @@
     "prix" : 40,
     "client": null
 
-  } ,
+  },
   {
     "id" : 2,
     "capacite": 3,
@@ -17,7 +17,7 @@
     "jours" : 5,
     "prix" : 50,
     "client" : null
-  }
+  },
   {
     "id" : 3,
     "capacite": 4,
@@ -26,7 +26,7 @@
     "jours" : 5,
     "prix" : 50,
     "client" : null
-  }
+  },
   {
     "id" : 4,
     "capacite": 4,
@@ -35,7 +35,7 @@
     "jours" : 5,
     "prix" : 50,
     "client" : null
-  }
+  },
   {
     "id" : 5,
     "capacite": 4,
@@ -44,7 +44,7 @@
     "jours" : 5,
     "prix" : 50,
     "client" : null
-  }
+  },
   {
     "id" : 6,
     "capacite": 5,
@@ -54,7 +54,7 @@
     "prix" : 40,
     "client": null
 
-  } ,
+  },
   {
     "id" : 7,
     "capacite": 5,
@@ -63,7 +63,7 @@
     "jours" : 5,
     "prix" : 50,
     "client" : null
-  }
+  },
   {
     "id" : 8,
     "capacite": 5,
@@ -72,7 +72,7 @@
     "jours" : 5,
     "prix" : 50,
     "client" : null
-  }
+  },
   {
     "id" : 9,
     "capacite": 6,
@@ -81,7 +81,7 @@
     "jours" : 5,
     "prix" : 50,
     "client" : null
-  }
+  },
   {
     "id" : 10,
     "capacite": 6,
