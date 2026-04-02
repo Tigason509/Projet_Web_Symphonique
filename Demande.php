@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fin = $_POST['fin'];
     $chambre_id = intval($_POST['chambre']);
 
-    // 1. Validation (Email/Prénom client)
     if (file_exists($file_clients)) {
         $clients_data = json_decode(file_get_contents($file_clients), true);
         $client_existe = false;
@@ -28,13 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // 2. Vérification des dates
     if ($debut > $fin) {
         echo "Erreur : La date de début est après la fin.";
         exit();
     }
 
-    // 3. MISE À JOUR DE LA CAPACITÉ (Stock réel)
     if (file_exists($file_chambres)) {
         $chambres = json_decode(file_get_contents($file_chambres), true);
         foreach ($chambres as $key => $c) {
@@ -50,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         file_put_contents($file_chambres, json_encode($chambres, JSON_PRETTY_PRINT));
     }
 
-    // 4. ENREGISTREMENT DANS DEMANDE.JSON (Pour l'affichage admin)
     $nouvelle_demande = [
         "nom" => $nom,
         "prenom" => $prenom,
