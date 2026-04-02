@@ -1,18 +1,29 @@
 [
-  {
-    "nom" : "test",
-    "prenom" : "test",
-    "debut" : "2026-06-02",
-    "fin" : "2026-04-28",
-    "id_chambre" : 8,
-    "nb_personnes" : 5
-  },
-  {
-    "nom" : "test",
-    "prenom" : "test",
-    "debut" : "2026-06-02",
-    "fin" : "2026-04-28",
-    "id_chambre" : 4,
-    "nb_personnes" : 6
-  }
+    {
+        "nom": "test",
+        "prenom": "test",
+        "debut": "2026-06-02",
+        "fin": "2026-04-28",
+        "id_chambre": 8,
+        "nb_personnes": 5,
+        "statut": "en attente"
+    },
+    {
+        "nom": "test",
+        "prenom": "test",
+        "debut": "2026-06-02",
+        "fin": "2026-04-28",
+        "id_chambre": 4,
+        "nb_personnes": 6,
+        "statut": "en attente"
+    },
+    {
+        "nom": "Nom",
+        "prenom": "Pr\u00e9nom",
+        "debut": "2026-04-08",
+        "fin": "2026-04-15",
+        "id_chambre": 1,
+        "nb_personnes": 1,
+        "statut": "en attente"
+    }
 ]

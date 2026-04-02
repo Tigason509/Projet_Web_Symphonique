@@ -10,5 +10,17 @@
         "prenom": "njksl",
         "email": "nskj@gmail.com",
         "mdp": "KOKAPOJDZ"
+    },
+    {
+        "nom": "par",
+        "prenom": "ex",
+        "email": "parex@gmail.com",
+        "mdp": "KOKO"
+    },
+    {
+        "nom": "Nom",
+        "prenom": "Pr\u00e9nom",
+        "email": "prenom@gmail.com",
+        "mdp": "KOKOKO"
     }
 ]

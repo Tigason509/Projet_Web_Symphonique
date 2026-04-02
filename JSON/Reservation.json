@@ -16,5 +16,14 @@
         "debut": "2026-04-09",
         "fin": "2026-04-22",
         "activite": "piano"
+    },
+    {
+        "nom": "nom",
+        "prenom": "Pr\u00e9nom",
+        "email": "prenom@gmail.com",
+        "nb_personnes": 1,
+        "debut": "2026-04-12",
+        "fin": "2026-04-19",
+        "activite": "piano"
     }
 ]

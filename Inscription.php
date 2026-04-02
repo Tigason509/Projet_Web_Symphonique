@@ -18,8 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $utilisateurs = json_decode($contenuActuel, true) ?: [];
     }
 
-    // ... reste de ton code (vérification doublon et push) ...
-
     $utilisateurs[] = [
         "nom" => $nom,
         "prenom" => $prenom,

@@ -2,114 +2,87 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $file = 'JSON/Chambre.json';
+    $file_chambres = 'JSON/Chambre.json';
     $file_clients = 'JSON/Client.json';
+    $file_demandes = 'JSON/Demande.json'; // Le bon fichier de destination
 
-    $nom = $_POST['nom']  ;
+    $nom = $_POST['nom'] ;
     $prenom = $_POST['prenom'] ;
     $email = $_POST['email'] ;
     $nb = intval($_POST['nb_personnes'] );
     $debut = $_POST['debut'] ;
     $fin = $_POST['fin'] ;
-    $chambre_id = $_POST['chambre'] ;
+    $chambre_id = intval($_POST['chambre']);
 
-    // Vérification des champs obligatoires
-    if ($nom === '' || $prenom === '' || $email === '' || $chambre_id === '' || $nb <= 0) {
+    // 1. Vérifications de base
+    if ($nom === '' || $prenom === '' || $email === '' || $chambre_id === 0 || $nb <= 0) {
         echo "Erreur : Tous les champs sont obligatoires";
         exit();
     }
-    if (file_exists($file_clients)) {
-        $clients_data = json_decode(file_get_contents($file_clients), true) ;
-        $client_existe = false;
 
+
+    if (file_exists($file_clients)) {
+        $clients_data = json_decode(file_get_contents($file_clients), true);
+        $client_existe = false;
         foreach ($clients_data as $client) {
-            // On vérifie si l'email ET le prénom correspondent
             if ($client['email'] === $email && $client['prenom'] === $prenom) {
                 $client_existe = true;
                 break;
             }
         }
-
         if (!$client_existe) {
-            echo "Erreur : Aucun compte trouvé avec cet email et ce prénom. Veuillez vous inscrire.";
+            echo "Erreur : Aucun compte trouvé. Veuillez vous inscrire.";
             exit();
         }
-    } else {
-        echo "Erreur : Base de données clients inaccessible.";
-        exit();
     }
 
-    // Vérification des dates
-    if ($debut === '' || $fin === '') {
-        echo "Erreur : Les dates sont obligatoires";
-        exit();
-    }
-
-    if ($debut > $fin) {
-        echo "Erreur : La date de début doit être avant la date de fin";
-        exit();
-    }
-
-    // --- MISE À JOUR DE LA CAPACITÉ ---
-    if (file_exists($file)) {
-        $chambres_data = json_decode(file_get_contents($file), true);
+    // 3. Mise à jour de la capacité dans Chambre.json
+    if (file_exists($file_chambres)) {
+        $chambres_data = json_decode(file_get_contents($file_chambres), true);
         $trouve = false;
-
         foreach ($chambres_data as $key => $c) {
-            if ($c['id'] === $chambre_id) {
+            if (intval($c['id']) === $chambre_id) {
                 $trouve = true;
-
-                // Vérifier s'il reste assez de places
                 if ($c['capacite'] >= $nb) {
-                    $chambres_data[$key]['capacite'] -= $nb; // on met le nombre de personnes en faisant cette soustration
+                    $chambres_data[$key]['capacite'] -= $nb;
                 } else {
-                    echo "Erreur : Plus assez de places disponibles (reste : " . $c['capacite'] . " places)";
+                    echo "Erreur : Plus assez de places (reste : " . $c['capacite'] . ")";
                     exit();
                 }
                 break;
             }
         }
-
         if (!$trouve) {
-            echo "Erreur : La chambre choisie n'existe pas dans le système.";
+            echo "Erreur : Chambre inexistante.";
             exit();
         }
-
-        // Sauvegarder la nouvelle capacité
-        file_put_contents($file, json_encode($chambres_data, JSON_PRETTY_PRINT));
-    } else {
-        echo "Erreur : Fichier des chambres introuvable.";
-        exit();
+        // Sauvegarde des chambres mises à jour
+        file_put_contents($file_chambres, json_encode($chambres_data, JSON_PRETTY_PRINT));
     }
 
-    // Nouvelle réservation
-    $nouvelle_reservation = [
+    // 4. Écriture dans Demande.json
+    $nouvelle_demande = [
             "nom" => $nom,
             "prenom" => $prenom,
-            "email" => $email,
-            "nb_personnes" => $nb,
             "debut" => $debut,
             "fin" => $fin,
-            "chambre_id" => $chambre_id
+            "id_chambre" => $chambre_id,
+            "nb_personnes" => $nb,
+            "statut" => "en attente" // Ajout du statut par défaut
     ];
 
-    // Lire le fichier existant
-    if (file_exists($file)) {
-        $json_data = file_get_contents($file);
-        $reservations = json_decode($json_data, true);
+    $demandes_existantes = [];
+    if (file_exists($file_demandes)) {
+        $demandes_existantes = json_decode(file_get_contents($file_demandes), true);
+    }
+
+    $demandes_existantes[] = $nouvelle_demande;
+
+    if (file_put_contents($file_demandes, json_encode($demandes_existantes, JSON_PRETTY_PRINT))) {
+        echo "Demande enregistrée avec succès dans Demande.json !";
     } else {
-        $reservations = [];
+        echo "Erreur lors de l'écriture du fichier.";
     }
-
-    if (!is_array($reservations)) {
-        $reservations = [];
-    }
-
-    // Ajouter la nouvelle réservation
-    $reservations[] = $nouvelle_reservation;
-    file_put_contents($file, json_encode($reservations, JSON_PRETTY_PRINT));
-
-    echo "Réservation enregistrée et capacité mise à jour avec succès !";
     exit();
 }
 ?>
@@ -159,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <p>Numéro de Chambre</p>
                 <input type="number" id="chambre" min="1" max="10" required>
-                <button id="envoi_reservation">Envoyer la réservation</button>
+                <button type="submit" id="envoi_reservation">Envoyer la réservation de chambre</button>
 
                 <div id="resultat" style="margin-top: 15px; padding: 10px;"></div>
             </div>
