@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(document).on('click', 'button[type="submit"]', function(e) {
-        e.preventDefault(); // Empêcher le rechargement de la page
+        e.preventDefault(); // Ne pas recharger inutilement
 
         const data = {
             nom: $('#nom').val(),
@@ -24,7 +24,7 @@ $(document).ready(function() {
                     $('#signupForm')[0].reset();
                 }
             },
-            error: function(xhr, status, error) {
+            error: function(status, error) {
                 console.error("Erreur AJAX:", error);
                 $('#message').text("Erreur de connexion au serveur.").css('color', 'red');
             }
