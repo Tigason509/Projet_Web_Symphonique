@@ -1,0 +1,18 @@
+[
+  {
+    "nom" : "test",
+    "prenom" : "test",
+    "debut" : "2026-06-02",
+    "fin" : "2026-04-28",
+    "id_chambre" : 8,
+    "nb_personnes" : 5
+  },
+  {
+    "nom" : "test",
+    "prenom" : "test",
+    "debut" : "2026-06-02",
+    "fin" : "2026-04-28",
+    "id_chambre" : 4,
+    "nb_personnes" : 6
+  }
+]
