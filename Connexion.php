@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="mdp" placeholder="Mot de passe" required>
     <button type="submit">Se connecter</button>
-    <button type="submit" onclick="document.location='Inscription.php'">S'inscrire<a/>
+    <button type="submit" onclick="document.location='Inscription.html'">S'inscrire<a/>
 </form>
 </body>
 </html>
