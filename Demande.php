@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="card shadow-sm">
         <div class="table-responsive">
             <div id="resultat" class="mb-3"></div>
-
+            <h2>Tableau de demandes</h2>
             <div class="card shadow-sm">
                 <div class="table-responsive">
                     <table class="table table-hover align-middle mb-0" id="table-demandes">
@@ -111,6 +111,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
+        <div class="card shadow-sm mt-5">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">Chambres occupées (Réservations acceptées)</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="table-chambres-prises">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Client</th>
+                        <th>N° Chambre</th>
+                        <th>Période d'occupation</th>
+                        <th>Nombre de personnes</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="Demande.js"></script>

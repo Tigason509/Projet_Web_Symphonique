@@ -1,14 +1,5 @@
 [
     {
-        "nom": "Nom",
-        "prenom": "Pr\u00e9nom",
-        "debut": "2026-04-08",
-        "fin": "2026-04-15",
-        "id_chambre": 1,
-        "nb_personnes": 1,
-        "statut": "accepte"
-    },
-    {
         "nom": "par",
         "prenom": "ex",
         "debut": "2026-04-16",
