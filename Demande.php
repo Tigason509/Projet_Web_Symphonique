@@ -93,6 +93,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="card shadow-sm">
         <div class="table-responsive">
+            <div id="resultat" class="mb-3"></div>
+
+            <div class="card shadow-sm">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0" id="table-demandes">
             <table class="table table-hover align-middle mb-0" id="table-demandes">
                 <thead class="table-dark">
                     <tr>
@@ -112,6 +117,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="DemandeAdmin.js"></script>
+<script src="Demande.js"></script>
 </body>
 </html>
