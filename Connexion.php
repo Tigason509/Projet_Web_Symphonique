@@ -16,16 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Erreur serveur.";
             exit();
         }
-
         foreach ($utilisateurs as $user) {
             if ($user['email'] === $email_saisi && $user['mdp'] === $mdp_saisi) {
-
                 echo "Connexion réussie";
                 exit();
             }
 
         }
-
         echo "Erreur : Email ou mot de passe incorrect.";
     } else {
         echo "Erreur : fichier introuvable.";
@@ -33,12 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 ?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form id="connexion" method="POST" action="index.html">
     <h2>Connexion</h2>
 
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="mdp" placeholder="Mot de passe" required>
+    <input type="email" name="email" id="email" placeholder="Email" required>
+    <input type="password" name="mdp" id="password" placeholder="Mot de passe" required>
     <button type="submit">Se connecter</button>
     <button type="submit" onclick="document.location='Inscription.html'">S'inscrire<a/>
 </form>

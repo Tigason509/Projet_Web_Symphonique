@@ -15,9 +15,15 @@ function Connection() {
         data: donnees,
         success: function(reponse) {
             $('#resultat').html(reponse);
-            if (reponse.includes("réussie")) {
-                window.location = 'index.php';
+            if (reponse.includes("réussie")){
+                if(donnees['email']==="emailadmin@gmail.com" ){
+                    window.location = 'Tableaudebord.html' ;
+                }
+                else {
+                    window.location = 'index.php';
+                }
             }
+
         },
         error: function() {
             $('#resultat').html("Erreur serveur.");

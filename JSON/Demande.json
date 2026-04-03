@@ -6,6 +6,15 @@
         "fin": "2026-04-30",
         "id_chambre": 2,
         "nb_personnes": 1,
-        "statut": "en attente"
+        "statut": "accepte"
+    },
+    {
+        "nom": "nsqj",
+        "prenom": "njksl",
+        "debut": "2026-04-17",
+        "fin": "2026-04-29",
+        "id_chambre": 3,
+        "nb_personnes": 2,
+        "statut": "accepte"
     }
 ]

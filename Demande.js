@@ -76,7 +76,6 @@ $(document).ready(function() {
 
         if(confirm(message)) {
             $.post('GestionAdmin.php', { index: index, action: 'refuser' }, function(response) {
-                // Si c'est une libération, on peut personnaliser le message de retour
                 let msgTableau = type === 'liberer' ? "Chambre libérée avec succès." : response;
                 alert(msgTableau);
                 chargerTableau();

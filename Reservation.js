@@ -47,7 +47,6 @@ $(document).ready(function() {
 
                 $('#resultat').removeClass().addClass(color).html(res);
 
-                // Si succès, rediriger après 1.5s
                 if (!res.includes("Erreur")) {
                     setTimeout(() => {
                         window.location.href = 'TableauActivite.php';

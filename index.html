@@ -15,21 +15,36 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Services
+                    </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="Reservation.php">Réserver</a></li>
                         <li><a class="dropdown-item" href="Chambre.php">Loger (Chambre)</a></li>
                         <li><a class="dropdown-item" href="Connexion.php">Se connecter</a></li>
-                        <li><a class="dropdown-item" href="Administrer.php">administrer</a></li>
+                        <li><a class="dropdown-item" href="Administrer.php">Administrer</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">En savoir plus</a></li>
                     </ul>
                 </li>
             </ul>
+
+            <div class="d-flex align-items-center">
+                <a href="Connexion.php" class="btn btn-outline-dark d-flex align-items-center">
+                    <img src="Sol.png"
+                         alt="Profil"
+                         width="24"
+                         height="24"
+                         class="me-2 rounded-circle">
+                    Profil
+                </a>
+            </div>
         </div>
     </div>
 </nav>

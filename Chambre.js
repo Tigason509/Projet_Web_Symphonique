@@ -41,7 +41,7 @@ $(document).ready(function() {
                 const estErreur = reponse.includes("Erreur");
                 const maCouleur = estErreur ? "#d9534f" : "#5cb85c";
 
-                // Mise à jour de la div résultat
+                // M
                 $('#resultat')
                     .css({
                         "background-color": maCouleur,
@@ -52,7 +52,6 @@ $(document).ready(function() {
                     })
                     .html(reponse);
 
-                // Si c'est un succès, on vide les champs après 2 secondes
                 if (!estErreur) {
                     setTimeout(() => {
                         $('.reservation input').val('');

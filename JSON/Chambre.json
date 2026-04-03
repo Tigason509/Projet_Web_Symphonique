@@ -19,7 +19,7 @@
     },
     {
         "id": 3,
-        "capacite": 4,
+        "capacite": 2,
         "disponible": true,
         "n_personnes": 0,
         "jours": 5,
