@@ -8,7 +8,6 @@
 }
 
 body {
-	/* Utilise les polices déjà présentes sur l'ordinateur de l'utilisateur */
 	font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 	background-color: var(--light-bg);
 	color: var(--text-main);
@@ -18,7 +17,6 @@ body {
 
 /* --- Navigation --- */
 .navbar {
-	background-color: var(--white) !important;
 	border-bottom: 3px solid var(--gold);
 	box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
@@ -69,7 +67,7 @@ h1 {
 
 .form-control {
 	border: 1px solid var(--border-color);
-	border-radius: 0px; /* Le "flat design" sans arrondis fait plus pro/luxe */
+	border-radius: 0px;
 	padding: 12px;
 	background-color: #fff;
 }
@@ -79,13 +77,7 @@ h1 {
 	box-shadow: 0 0 5px rgba(184, 146, 65, 0.3);
 }
 
-/* --- Le Bouton de recherche --- */
-.btn-outline-success {
-	color: var(--gold) !important;
-	border-color: var(--gold) !important;
-	border-radius: 0px;
-	transition: all 0.4s;
-}
+
 
 .btn-outline-success:hover {
 	background-color: var(--gold) !important;

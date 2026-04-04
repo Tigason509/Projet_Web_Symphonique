@@ -1,5 +1,5 @@
 let isAdmin = false;
-
+//Inspiré de Reservation.js dans le fonctionnement
 $(document).ready(function() {
     console.log("JS Tableau chargé");
     initTableau();
@@ -11,7 +11,6 @@ $(document).ready(function() {
             isAdmin = true;
             $('#admin_zone').html('<div class="alert alert-success m-0">Accès Admin Accordé</div>');
 
-            // Rechargement de notre tableau
             setTimeout(function() {
                 initTableau();
             }, 500);

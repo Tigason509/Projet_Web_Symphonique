@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: application/json'); // Indique au navigateur qu'on envoie du JSON
+header('Content-Type: application/json');
 
 $file = 'JSON/Reservation.json';
 
