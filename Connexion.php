@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if ($email_saisi === "emailadmin@gmail.com") {
                         header('Location: Tableaudebord.html');
                     } else {
-                        header('Location: index.php');
+                        header('Location: index.html');
                     }
                     exit();
                 }
