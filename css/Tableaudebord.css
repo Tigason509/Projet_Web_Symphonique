@@ -18,7 +18,7 @@ h1 {
     letter-spacing: 0.5px;
 }
 
-a {
+a, button {
     display: block;
     background: #252525;
     color: #f4f4f4;
@@ -28,9 +28,11 @@ a {
     margin-bottom: 15px;
     width: 350px;
     font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: 0.2s;
 }
 
-a:hover {
+a:hover, button:hover {
     background: #2f2f2f;
     border-left-color: #d4af37;
     color: #d4af37;
