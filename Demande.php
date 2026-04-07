@@ -81,14 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container py-5">
     <h2 class="mb-4">Tableau de bord Administrateur</h2>
 
-    <div class="card shadow-sm mb-4">
-        <div class="card-body">
-            <label for="adminEmail">Email de session :</label>
-            <input type="email" id="adminEmail" class="form-control d-inline-block w-auto" placeholder="admin@hotel.com">
-            <p class="text-muted small mt-2">Les actions ne seront autorisées que si l'email correspond à l'admin.</p>
-        </div>
-    </div>
-
     <div class="card shadow-sm">
         <div class="table-responsive">
             <div id="resultat" class="mb-3"></div>
@@ -115,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
         <div class="card shadow-sm mt-5">
             <div class="card-header bg-success text-white">
-                <h5 class="mb-0">Chambres occupées (Réservations acceptées)</h5>
+                <h5 class="mb-0">Acceptations (Réservations acceptées)</h5>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0" id="table-chambres-prises">

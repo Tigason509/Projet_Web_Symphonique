@@ -10,7 +10,7 @@ $(document).ready(function() {
             }
 
             $.each(data, function(index, d) {
-                let badgeClass = d.statut === 'accepte' ? 'bg-success' : 'bg-warning text-dark';
+                let status = d.statut === 'accepte' ? 'bg-success' : 'bg-warning text-dark';
                 let boutons = d.statut === 'accepte' ?
                     '<span class="text-muted">Traitée</span>' :
                     `<button class="btn btn-sm btn-success me-1" onclick="valider(${index})">Accepter</button>
@@ -22,7 +22,7 @@ $(document).ready(function() {
                     <td>${d.activite ? d.activite : (d.id_chambre ? 'Chambre ' + d.id_chambre : ' ')}</td>
                     <td>${d.debut} au ${d.fin}</td>
                     <td>${d.nb_personnes}</td>
-                    <td><span class="badge ${badgeClass}">${d.statut}</span></td>
+                    <td><span class="badge ${status}">${d.statut}</span></td>
                     <td>${boutons}</td>
                 </tr>`;
             });
@@ -34,12 +34,12 @@ $(document).ready(function() {
     function chargerChambres_prises() {
         $.getJSON('JSON/Demande.json', function(data) {
             let html = '';
-            let count = 0;
+            let compte = 0;
 
             $.each(data, function(index, d) {
                 // On affiche uniquement si le statut est "accepte"
                 if (d.statut === 'accepte') {
-                    count++;
+                    compte++;
                     // Le bouton "Libérer" appelle la fonction refuser pour supprimer l'entrée
                     let boutonLibere = `<button class="btn btn-sm btn-outline-primary" onclick="refuser(${index}, 'liberer')">Libérer</button>`;
 
@@ -54,7 +54,7 @@ $(document).ready(function() {
                 }
             });
 
-            if (count === 0) {
+            if (compte === 0) {
                 html = '<tr><td colspan="5" class="text-center">Aucune chambre occupée pour le moment.</td></tr>';
             }
 

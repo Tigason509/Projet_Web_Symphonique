@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['email'])) {
         "fin" => $fin,
         "nb_personnes" => $nb,
         "activite" => $nom_act,
-        "statut" => "en attente" // Ne sera facturé que si "accepte"
+        "statut" => "en attente"
     ];
 
     //Sauvegarde
