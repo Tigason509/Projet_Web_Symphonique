@@ -16,5 +16,15 @@
         "id_chambre": 3,
         "nb_personnes": 2,
         "statut": "accepte"
+    },
+    {
+        "nom": null,
+        "prenom": null,
+        "email": "emailadmin@gmail.com",
+        "debut": "2026-04-16",
+        "fin": "2026-04-17",
+        "nb_personnes": 1,
+        "activite": "badminton",
+        "statut": "accepte"
     }
 ]

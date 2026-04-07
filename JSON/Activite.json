@@ -3,14 +3,14 @@
         "nom": "piano",
         "id": 1,
         "disponible": true,
-        "capacite": 1,
+        "capacite": 0,
         "capacite_max": 3
     },
     {
         "nom": "badminton",
         "id": 2,
         "disponible": true,
-        "capacite": 3,
+        "capacite": 0,
         "capacite_max": 3
     }
 ]

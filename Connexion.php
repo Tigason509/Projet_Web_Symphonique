@@ -1,4 +1,5 @@
 <?php
+session_start();
 $file = 'JSON/Client.json';
 $erreur = "";
 
@@ -18,10 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach ($utilisateurs as $user) {
                 if ($user['email'] === $email_saisi && $user['mdp'] === $mdp_saisi) {
                     $trouve = true;
+                    $_SESSION['email'] = $user['email'];
                     if ($email_saisi === "emailadmin@gmail.com") {
                         header('Location: Tableaudebord.html');
                     } else {
-                        header('Location: index.html');
+                        header('Location: ProfilClient.php');
                     }
                     exit();
                 }

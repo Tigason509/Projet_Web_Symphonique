@@ -19,7 +19,7 @@ $(document).ready(function() {
                 html += `
                 <tr>
                     <td>${d.nom} ${d.prenom}</td>
-                    <td>Chambre ${d.id_chambre}</td>
+                    <td>${d.activite ? d.activite : (d.id_chambre ? 'Chambre ' + d.id_chambre : ' ')}</td>
                     <td>${d.debut} au ${d.fin}</td>
                     <td>${d.nb_personnes}</td>
                     <td><span class="badge ${badgeClass}">${d.statut}</span></td>
@@ -46,7 +46,7 @@ $(document).ready(function() {
                     html += `
                     <tr>
                         <td><strong>${d.nom}</strong> ${d.prenom}</td>
-                        <td><span class="badge bg-primary">Chambre ${d.id_chambre}</span></td>
+                        <td><span class="badge bg-primary">${d.activite ? d.activite : 'Chambre ' + d.id_chambre}</span></td>
                         <td>Du ${d.debut} au ${d.fin}</td>
                         <td>${d.nb_personnes} pers.</td>
                         <td>${boutonLibere}</td>

@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "fin" => $fin,
         "id_chambre" => $chambre_id,
         "nb_personnes" => $nb,
-        "statut" => "en attente" // Crucial pour l'affichage
+        "statut" => "en attente"
     ];
 
     $demandes_existantes = file_exists($file_demandes) ? json_decode(file_get_contents($file_demandes), true) : [];
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <thead class="table-dark">
                     <tr>
                         <th>Client</th>
-                        <th>Chambre</th>
+                        <th>objet</th>
                         <th>Dates</th>
                         <th>Voyageurs</th>
                         <th>Statut</th>
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <thead class="table-light">
                     <tr>
                         <th>Client</th>
-                        <th>N° Chambre</th>
+                        <th>objet</th>
                         <th>Période d'occupation</th>
                         <th>Nombre de personnes</th>
                         <th>Actions</th>
