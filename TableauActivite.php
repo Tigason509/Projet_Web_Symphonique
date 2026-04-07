@@ -35,7 +35,7 @@
 </table>
 
 <div style="margin-top: 20px;">
-    <a href="Reservation.php" style="padding: 10px 20px; background: #b89241; color: white; text-decoration: none; border-radius: 5px;">Nouvelle réservation</a>
+    <a href="Reservation.php" style=" background: #b89241; color: white; text-decoration: none; border-radius: 5px;">Nouvelle réservation</a>
 </div>
 
 </body>

@@ -134,6 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p class="text-muted">Nous avons un grand panel d'activités à vous proposer, n'hésitez pas à découvrir de nouvelles activités!</p>
                 <div class="p-3 border-start border-4" style="border-color: #b89241 !important; background: #f9f9f9;">
                     <small>Demandes</small>
+                    <a href="index.html">Retour à l'accueil ?</a>
                 </div>
             </div>
 

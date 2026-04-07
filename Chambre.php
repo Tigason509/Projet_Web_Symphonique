@@ -106,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p class="text-muted">Nous vous proposons 10 chambres, choisissez celle qui vous convient !</p>
                 <div class="p-3 border-start border-4" style="border-color: #b89241 !important; background: #f9f9f9;">
                     <small>Demandes</small>
+                    <a href="index.html">Retour à l'accueil ?</a>
                 </div>
             </div>
 

@@ -18,12 +18,12 @@
         "activite": "piano"
     },
     {
-        "nom": "nom",
-        "prenom": "Pr\u00e9nom",
-        "email": "prenom@gmail.com",
+        "nom": "par",
+        "prenom": "ex",
+        "email": "parex@gmail.com",
         "nb_personnes": 1,
-        "debut": "2026-04-12",
-        "fin": "2026-04-19",
+        "debut": "2026-04-08",
+        "fin": "2026-04-09",
         "activite": "piano"
     }
 ]

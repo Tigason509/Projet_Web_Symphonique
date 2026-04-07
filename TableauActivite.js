@@ -49,7 +49,7 @@ function initTableau() {
         success: function(reserv) {
             console.log("Réservations chargées:", reserv);
             const corps = $("#corps_tableau");
-            corps.empty(); // S'assurer que des informations ne soient pas stockés en double
+            corps.empty();
 
             if (reserv && reserv.length > 0) {
                 $.each(reserv, function(index, res) {
