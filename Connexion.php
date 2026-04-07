@@ -49,9 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="email" name="email" id="email" placeholder="Email" required>
     <input type="password" name="mdp" id="mdp" placeholder="Mot de passe" required>
     <button type="submit">Se connecter</button>
+    <button type="button" onclick="window.location.href='Inscription.html'">S'inscrire</button>
 </form>
-
-<button type="button" onclick="window.location.href='Inscription.html'">S'inscrire</button>
-
 </body>
 </html>
