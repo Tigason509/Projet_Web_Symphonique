@@ -5,13 +5,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['email'])) {
     $file_demandes = 'JSON/Demande.json';
     $file_activites = 'JSON/Activite.json';
 
-    // Récupération des données POST
     $id_act = intval($_POST['id_act']);
     $nb = intval($_POST['nb_personnes']);
     $debut = $_POST['debut'];
     $fin = $_POST['fin'];
 
-    //Trouver le nom de l'activité
     $nom_act = "Inconnue";
     if (file_exists($file_activites)) {
         $activites = json_decode(file_get_contents($file_activites), true);
@@ -23,10 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['email'])) {
         }
     }
 
-    //Préparer la demande avec statut "en attente"
     $nouvelle_demande = [
-        "nom" => $_SESSION['nom'],
-        "prenom" => $_SESSION['prenom'],
+        "nom" => $_SESSION['nom']  ,
+        "prenom" => $_SESSION['prenom'] ,
         "email" => $_SESSION['email'],
         "debut" => $debut,
         "fin" => $fin,
@@ -35,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['email'])) {
         "statut" => "en attente"
     ];
 
-    //Sauvegarde
     $demandes = file_exists($file_demandes) ? json_decode(file_get_contents($file_demandes), true) : [];
     $demandes[] = $nouvelle_demande;
 

@@ -21,7 +21,7 @@ if(file_exists($file_act)){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="ProfilClient.js"></script>
 </head>
-<body class="bg-light">
+<body>
 
 <div class="container py-5">
     <h2>Bienvenue, <span id="clientEmail"><?= $_SESSION['email'] ?></span></h2>
@@ -58,12 +58,12 @@ if(file_exists($file_act)){
     </div>
 
     <div class="card shadow-sm">
-        <div class="card-header bg-dark text-white">Ma Facture (Activités validées)</div>
+        <div class="card-header bg-dark text-white">Ma Facture (Réservations validées)</div>
         <div class="table-responsive">
             <table class="table table-hover mb-0" id="table-facture">
                 <thead>
                 <tr>
-                    <th>Activité</th>
+                    <th>Objet</th>
                     <th>Dates</th>
                     <th>Voyageurs</th>
                     <th>Montant</th>
