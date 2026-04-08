@@ -25,5 +25,14 @@
         "debut": "2026-04-08",
         "fin": "2026-04-09",
         "activite": "piano"
+    },
+    {
+        "nom": "par",
+        "prenom": "ex",
+        "email": "parex@gmail.com",
+        "nb_personnes": 1,
+        "debut": "2026-04-10",
+        "fin": "2026-04-17",
+        "activite": "Yoga au Violon"
     }
 ]

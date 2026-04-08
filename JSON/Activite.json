@@ -3,56 +3,56 @@
         "nom": "piano",
         "id": 1,
         "disponible": true,
-        "capacite": 0,
+        "capacite": 3,
         "capacite_max": 3
     },
     {
         "nom": "badminton",
         "id": 2,
         "disponible": true,
-        "capacite": 0,
+        "capacite": 3,
         "capacite_max": 3
     },
     {
         "nom": "Chant Lyrique",
         "id": 3,
         "disponible": true,
-        "capacite": 0,
+        "capacite": 5,
         "capacite_max": 5
     },
     {
         "nom": "Yoga au Violon",
         "id": 4,
         "disponible": true,
-        "capacite": 0,
+        "capacite": 9,
         "capacite_max": 10
     },
     {
         "nom": "Atelier Lutherie",
         "id": 5,
         "disponible": true,
-        "capacite": 0,
+        "capacite": 10,
         "capacite_max": 2
     },
     {
         "nom": "Piscine Rythmique",
         "id": 6,
         "disponible": true,
-        "capacite": 0,
+        "capacite": 15,
         "capacite_max": 15
     },
     {
-        "nom": "Dîner Jazz Live",
+        "nom": "Diner Jazz Live",
         "id": 7,
         "disponible": true,
-        "capacite": 0,
+        "capacite": 20,
         "capacite_max": 20
     },
     {
         "nom": "Guitare Classique",
         "id": 8,
         "disponible": true,
-        "capacite": 0,
+        "capacite": 4,
         "capacite_max": 4
     }
 ]
