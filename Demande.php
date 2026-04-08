@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $file_chambres = 'JSON/Chambre.json';
     $file_clients = 'JSON/Client.json';
-    $file_demandes = 'JSON/Demande.json'; // Chemin vers vos demandes
+    $file_demandes = 'JSON/Demande.json'; // Chemin vers les demandes
 
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];

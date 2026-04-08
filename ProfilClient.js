@@ -22,7 +22,13 @@ $(document).ready(function() {
                     let dateDep = new Date(d.debut);
                     let dateRet = new Date(d.fin);
                     let diffTime = dateRet - dateDep;
-                    let nbNuits = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                    let msParJour = 1000 * 60 * 60 * 24;
+                    let nbNuits = (diffTime / msParJour) | 0;
+
+                    if (diffTime % msParJour > 0) {
+                        nbNuits = nbNuits + 1;
+                    }
 
                     if (nbNuits <= 0) nbNuits = 1;
 
