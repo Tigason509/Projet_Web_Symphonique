@@ -33,18 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Trouver l'activité et restaurer la capacité
                 foreach ($activites_data as $key => $act) {
                     if ($act['nom'] === $activite_nom) {
-                        // Si capacite_max existe, on vérifie de ne pas dépasser
                         if (isset($act['capacite_max'])) {
                             $nouvelle_capacite = $act['capacite'] + $nb_personnes;
-
-                            // Ne pas dépasser la capacité maximale
                             if ($nouvelle_capacite > $act['capacite_max']) {
                                 $activites_data[$key]['capacite'] = $act['capacite_max'];
                             } else {
                                 $activites_data[$key]['capacite'] = $nouvelle_capacite;
                             }
                         } else {
-                            // Si pas de capacite_max, on ajoute sans limite
                             $activites_data[$key]['capacite'] += $nb_personnes;
                         }
                         break;
@@ -54,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Sauvegarder le fichier des activités mis à jour
                 file_put_contents($file_activite, json_encode($activites_data, JSON_PRETTY_PRINT));
             }
-            // --- FIN RESTAURATION ---
 
             // Supprimer la réservation
             array_splice($reservations, $index, 1);

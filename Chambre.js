@@ -37,11 +37,10 @@ $(document).ready(function() {
             success: function(reponse) {
                 console.log("Serveur dit :", reponse);
 
-                // Déterminer la couleur (Erreur = Rouge, Succès = Vert)
+                // Déterminer la couleur
                 const estErreur = reponse.includes("Erreur");
                 const maCouleur = estErreur ? "#d9534f" : "#5cb85c";
 
-                // M
                 $('#resultat')
                     .css({
                         "background-color": maCouleur,

@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     // Envoi du formulaire
     $(document).on('click', '#envoi_reservation', function(e) {
-        e.preventDefault(); // Empêcher le comportement par défaut
+        e.preventDefault(); // Empêcher un rechargement inutile
 
         if (!verifierDates()) return;
 
@@ -39,8 +39,6 @@ $(document).ready(function() {
 
                 // Afficher le résultat
                 const color = res.includes("Erreur") ? "text-danger" : "text-success";
-
-                // Créer la zone de résultat si elle n'existe pas
                 if ($('#resultat').length === 0) {
                     $('.reservation').append('<div id="resultat" style="margin-top: 15px; padding: 10px; border-radius: 5px;"></div>');
                 }

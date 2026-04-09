@@ -18,23 +18,60 @@
         "statut": "accepte"
     },
     {
-        "nom": null,
-        "prenom": null,
-        "email": "emailadmin@gmail.com",
-        "debut": "2026-04-16",
-        "fin": "2026-04-17",
+        "nom": "par",
+        "prenom": "ex",
+        "debut": "2026-04-22",
+        "fin": "2026-04-27",
+        "id_chambre": 1,
         "nb_personnes": 1,
-        "activite": "badminton",
         "statut": "accepte"
     },
     {
         "nom": null,
         "prenom": null,
         "email": "parex@gmail.com",
-        "debut": "2026-04-09",
-        "fin": "2026-04-15",
+        "debut": "2026-04-23",
+        "fin": "2026-04-30",
         "nb_personnes": 1,
-        "activite": "piano",
+        "activite": "Piscine Rythmique",
+        "statut": "accepte"
+    },
+    {
+        "nom": null,
+        "prenom": null,
+        "email": "regist@gmail.com",
+        "debut": "2026-04-15",
+        "fin": "2026-04-17",
+        "nb_personnes": 2,
+        "activite": "Chant Lyrique",
+        "statut": "accepte"
+    },
+    {
+        "nom": "par",
+        "prenom": "ex",
+        "debut": "2026-04-23",
+        "fin": "2026-04-26",
+        "id_chambre": 3,
+        "nb_personnes": 2,
+        "statut": "accepte"
+    },
+    {
+        "nom": null,
+        "prenom": null,
+        "email": "parex@gmail.com",
+        "debut": "2026-04-18",
+        "fin": "2026-04-25",
+        "nb_personnes": 3,
+        "activite": "Chant Lyrique",
+        "statut": "accepte"
+    },
+    {
+        "nom": "par ",
+        "prenom": "ex",
+        "debut": "2026-04-25",
+        "fin": "2026-05-02",
+        "id_chambre": 6,
+        "nb_personnes": 2,
         "statut": "accepte"
     }
 ]

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(document).on('click', 'button[type="submit"]', function(e) {
-        e.preventDefault(); // Ne pas recharger inutilement
+        e.preventDefault();
 
         const data = {
             nom: $('#nom').val(),

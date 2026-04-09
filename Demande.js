@@ -70,11 +70,11 @@ $(document).ready(function() {
         });
     };
 
-    // La fonction refuser gère maintenant la confirmation pour "Refuser" ou "Libérer"
+    // La fonction refuser gère la confirmation pour "Refuser" ou "Libérer"
     window.refuser = function(index, type = 'refuser') {
         let message = type === 'liberer' ? "Voulez-vous libérer cette chambre (supprimer la réservation) ?" : "Refuser cette demande ?";
 
-        if(confirm(message)) {
+        if(confirm(message)) { // Faire pop up la fenetre du navigateur.
             $.post('GestionAdmin.php', { index: index, action: 'refuser' }, function(response) {
                 let msgTableau = type === 'liberer' ? "Chambre libérée avec succès." : response;
                 alert(msgTableau);

@@ -1,4 +1,4 @@
-let isAdmin = false;
+let estAdmin = false;
 //Inspiré de Reservation.js dans le fonctionnement
 $(document).ready(function() {
     console.log("JS Tableau chargé");
@@ -8,7 +8,7 @@ $(document).ready(function() {
         const mail = $('#admin_email_input').val();
         const mot_de_passe=$('#admin_mdp_input').val() ;
         if (mail === "emailadmin@gmail.com" && mot_de_passe==="motdepasse") {
-            isAdmin = true;
+            estAdmin = true;
             $('#admin_zone').html('<div class="alert alert-success m-0">Accès Admin Accordé</div>');
 
             setTimeout(function() {
@@ -54,7 +54,7 @@ function initTableau() {
             if (reserv && reserv.length > 0) {
                 $.each(reserv, function(index, res) {
                     let boutonSuppr = "";
-                    if (isAdmin) {
+                    if (estAdmin) {
                         boutonSuppr = `<td><button class="btn btn-danger btn-sm btn-supprimer" data-index="${index}">Supprimer</button></td>`;
                     }
 
@@ -70,7 +70,7 @@ function initTableau() {
                     `);
                 });
             } else {
-                const colspan = isAdmin ? 6 : 5;
+                const colspan = estAdmin ? 6 : 5;
                 corps.append(`<tr><td colspan="${colspan}" style="text-align: center;">Aucune réservation trouvée</td></tr>`);
             }
         },

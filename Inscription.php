@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (file_exists($fichier)) {
         $contenuActuel = file_get_contents($fichier);
-        // On décode, et si c'est vide ou invalide, on utilise un tableau vide []
         $utilisateurs = json_decode($contenuActuel, true) ?: [];
     }
 

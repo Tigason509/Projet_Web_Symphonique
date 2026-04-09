@@ -22,5 +22,11 @@
         "prenom": "Prenom",
         "email": "prenom@gmail.com",
         "mdp": "KOKOKO"
+    },
+    {
+        "nom": "Regi",
+        "prenom": "ST",
+        "email": "regist@gmail.com",
+        "mdp": "KOKO"
     }
 ]
